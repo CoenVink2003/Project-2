@@ -1,78 +1,39 @@
 package org.example.crackgui;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
-public class CrackGPTgui extends CrackGPT {
+import java.util.Locale;
+import java.util.ResourceBundle;
 
-    private static final String URL = "http://localhost:11434/api/generate";
-    private static final String CONTENT_TYPE_JSON = "application/json";
+public class CrackGPTgui extends Application {
+    private static final int APP_WIDTH = 800;
+    private static final int APP_HEIGHT = 600;
+    private ResourceBundle resourceBundle;
 
-    public String crackGPT(String userInput, String selectedLanguage) {
-        try {
-            String prompt = userInput + "\nPlease answer everything in " + selectedLanguage + ".";
-
-            JSONObject requestBody = new JSONObject();
-            requestBody.put("model", "gemma");
-            requestBody.put("prompt", prompt);
-            requestBody.put("stream", false);
-
-            URL url = new URL(URL);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", CONTENT_TYPE_JSON);
-            con.setDoOutput(true);
-
-            try (OutputStream os = con.getOutputStream()) {
-                byte[] input = requestBody.toJSONString().getBytes();
-                os.write(input, 0, input.length);
-            }
-
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                    StringBuilder response = new StringBuilder();
-                    String inputLine;
-
-                    while ((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
-                    }
-
-                    System.out.println(response);
-                    return parseResponse(response.toString());
-                }
-            } else {
-                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream()))) {
-                    StringBuilder errorMessage = new StringBuilder();
-                    String errorLine;
-
-                    while ((errorLine = errorReader.readLine()) != null) {
-                        errorMessage.append(errorLine);
-                    }
-
-                    return "Server responded with status code " + responseCode + ": " + errorMessage.toString();
-                }
-            }
-        } catch (IOException | ParseException e) {
-            return "Error: " + e.getMessage();
-        }
+    public static void main(String[] args) {
+        launch();
     }
 
-    private String parseResponse(String response) throws ParseException {
-        JSONParser parser = new JSONParser();
-        JSONObject jsonResponse = (JSONObject) parser.parse(response);
-        Object responseObject = jsonResponse.get("response");
+    @Override
+    public void start(Stage stage) {
+        resourceBundle = ResourceBundle.getBundle("org.example.crackgui.messages", Locale.getDefault());
+        Scene scene = createScene();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        stage.setTitle("CrackGPT-4");
+        stage.setScene(scene);
+        stage.show();
+    }
 
-        if (responseObject != null) {
-            System.out.println(responseObject.toString());
-            return responseObject.toString();
-        } else {
-            return "Server response is missing or invalid.";
-        }
+    private Scene createScene() {
+        BorderPane root = new BorderPane();
+        VBoxContainer mainContainer = new VBoxContainer(resourceBundle);
+
+        root.setTop(new TopBar(root));
+        root.setCenter(mainContainer);
+
+        return new Scene(root, APP_WIDTH, APP_HEIGHT);
     }
 }
