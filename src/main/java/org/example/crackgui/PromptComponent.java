@@ -1,36 +1,78 @@
 package org.example.crackgui;
 
-import org.json.simple.JSONArray;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class CrackGPTgui extends CrackGPT {
+public class PromptComponent {
+    private CrackGPT application;
+    private Button talkButton;
 
-    private static final String URL = "http://localhost:11434/api/generate";
-    private static final String CONTENT_TYPE_JSON = "application/json";
+    private static final String ai_url = "http://localhost:11434/api/generate";
 
-    public String crackGPT(String userInput, String selectedLanguage) {
+    public PromptComponent(CrackGPT application)
+    {
+        this.application = application;
+    }
+
+    public Button generate(TextArea inputTextArea, String selectedLanguage, TextArea outputTextArea)
+    {
+        Button button = new Button();
+        button.getStyleClass().add("talk-btn");
+        button.setMaxWidth(Double.MAX_VALUE);
+        button.setAlignment(Pos.CENTER);
+
+
+        String buttonText = this.application.language.getString("ask") + " CrackedGPT";
+        button.setText(buttonText);
+
+
+        button.setOnAction(event -> {
+            String input = inputTextArea.getText();
+
+            String response = prompt(input);
+
+            outputTextArea.setText(response);
+        });
+
+        this.talkButton = button;
+        return button;
+    }
+
+    public void update()
+    {
+        this.talkButton.setText(this.application.language.getString("ask") + " CrackedGPT");
+    }
+
+    public String prompt(String input)
+    {
         try {
-            String prompt = userInput + "\nPlease answer everything in " + selectedLanguage + ".";
+            String prompt = input + "\nPlease answer everything in " + this.application.getSettings().getLanguage() + ".";
 
-            JSONObject requestBody = new JSONObject();
-            requestBody.put("model", "gemma");
-            requestBody.put("prompt", prompt);
-            requestBody.put("stream", true);
-
-            URL url = new URL(URL);
+            // Prepare the request
+            JSONObject request = new JSONObject();
+            request.put("model", "gemma");
+            request.put("prompt", prompt);
+            request.put("stream", true);
+            URL url = new URL(ai_url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", CONTENT_TYPE_JSON);
+            con.setRequestProperty("Content-Type", "application/json");
             con.setDoOutput(true);
 
             try (OutputStream os = con.getOutputStream()) {
-                byte[] input = requestBody.toJSONString().getBytes();
-                os.write(input, 0, input.length);
+                byte[] requestBody = request.toJSONString().getBytes();
+                os.write(requestBody, 0, requestBody.length);
             }
 
             int responseCode = con.getResponseCode();

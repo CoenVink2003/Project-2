@@ -1,7 +1,6 @@
 package org.example.crackgui;
 
 import javafx.application.Application;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,216 +13,98 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
-    private static final int APP_WIDTH = 800;
-    private static final int APP_HEIGHT = 600;
+    private SettingsComponent settings;
+    private PromptComponent prompt;
 
-    private TextArea textArea;
-    private TextArea textAreaOutput;
-    private ComboBox<String> language;
-    private Button talkButton;
-    private ResourceBundle resourceBundle;
-    private Label languageLabel;
+    public ResourceBundle language;
 
-    public static void main(String[] args) {
-        launch();
-    }
-
-    @Override
     public void start(Stage stage) throws IOException {
-        Scene scene = createScene();
+        this.language =  ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));;
+        Scene scene = prompScreen(800, 600);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         stage.setTitle("CrackGPT-4");
+        stage.setMinWidth(800);
+        stage.setMinHeight(600);
         stage.setScene(scene);
         stage.show();
     }
 
-    private Scene createScene() {
-        VBox box = new VBox();
-        box.setStyle("-fx-background-color: #2067DC;");
-        box.getStyleClass().add("body");
+    private Scene prompScreen(int width, int height) {
+        // Background container
+        VBox body = new VBox();
+        body.setStyle("-fx-background-color: #2067DC;");
+        body.getStyleClass().add("body");
 
+        // Header label
+        Label title = new Label("CrackGPT-4");
+        title.getStyleClass().add("crackgpt-label");
+        title.setMaxWidth(Double.MAX_VALUE);
+        title.setAlignment(Pos.CENTER);
 
-        Label crackGpt = new Label("TimoOnCrack snif snif");
-        crackGpt.getStyleClass().add("crackgpt-label");
-        crackGpt.setMaxWidth(Double.MAX_VALUE);
-        crackGpt.setAlignment(Pos.CENTER);
-        box.getChildren().add(crackGpt);
+        // Input area
+        TextArea inputArea = new TextArea();
+        inputArea.setWrapText(true);
+        StackPane inputAreaPane = new StackPane();
+        inputAreaPane.setPadding(new Insets(0, 15, 0, 15));
+        inputAreaPane.getChildren().add(inputArea);
 
-        textArea = new TextArea();
-        textArea.setWrapText(true);
-        box.getChildren().add(textArea);
+        // Settings screen
+        settings = new SettingsComponent(this);
+        GridPane settingsPane = settings.generate();
 
-        StackPane textAreaPane = new StackPane();
-        textAreaPane.setPadding(new Insets(0, 15, 0, 15));
-        textAreaPane.getChildren().add(textArea);
-        box.getChildren().add(textAreaPane);
+        // AI output area
+        TextArea outputArea = new TextArea();
+        outputArea.setWrapText(true);
+        outputArea.setEditable(false);
+        StackPane textAreaOutputPane = new StackPane();
+        textAreaOutputPane.setPadding(new Insets(20, 15, 20, 15));
+        textAreaOutputPane.getChildren().add(outputArea);
 
-        GridPane settingsPane = createSettingsComponent();
-        box.getChildren().add(settingsPane);
-
-        talkButton = createButton();
-        talkButton.setOnAction(event -> {
-            String userInput = textArea.getText();
-            String selectedLanguage = language.getValue();
-
-            CrackGPTgui crackGPTgui = new CrackGPTgui();
-            String response = crackGPTgui.crackGPT(userInput, selectedLanguage);
-
-            textAreaOutput.setText(response);
-        });
+        // Prompt button
+        prompt = new PromptComponent(this);
+        Button talkButton = prompt.generate(inputArea, settings.getLanguage(), outputArea);
         StackPane talkButtonPane = new StackPane();
         talkButtonPane.setPadding(new Insets(40, 20, 0, 20));
         talkButtonPane.getChildren().add(talkButton);
-        box.getChildren().add(talkButtonPane);
 
-        textAreaOutput = new TextArea();
-        textAreaOutput.setWrapText(true);
-        box.getChildren().add(textAreaOutput);
-
-        StackPane textAreaOutputPane = new StackPane();
-        textAreaOutputPane.setPadding(new Insets(20, 15, 20, 15));
-        textAreaOutputPane.getChildren().add(textAreaOutput);
-        textAreaOutput.setEditable(false);
-        box.getChildren().add(textAreaOutputPane);
-
+        // Root layout
         BorderPane root = new BorderPane();
+        HBox header = new HBox();
+        header.setAlignment(Pos.CENTER_LEFT);
 
-        HBox topBox = new HBox();
-        topBox.setAlignment(Pos.CENTER_LEFT);
+        // Menu
+        MenuComponent menu = new MenuComponent(this);
         Button hamburgerButton = new Button("\u2630");
         hamburgerButton.getStyleClass().add("hamburger-button");
-        hamburgerButton.setOnAction(event -> {
-            if (root.getLeft() == null) {
-                root.setLeft(createMenu());
-            } else {
-                root.setLeft(null);
-            }
-        });
-        topBox.getChildren().add(hamburgerButton);
-        root.setTop(topBox);
+         hamburgerButton.setOnAction(event -> {
+             if (root.getLeft() == null) {
+                 root.setLeft(menu.generate());
+             } else {
+                 root.setLeft(null);
+             }
+         });
+        header.getChildren().add(hamburgerButton);
 
-        root.setCenter(box);
+        // Add elements to the body
+        body.getChildren().addAll(title, inputAreaPane, settingsPane, talkButtonPane, textAreaOutputPane);
 
-        Scene scene = new Scene(root, APP_WIDTH, APP_HEIGHT);
+        // Set elements in root layout
+        root.setTop(header);
+        root.setCenter(body);
+
+        // Create and return the scene
+        Scene scene = new Scene(root, width, height);
         return scene;
     }
 
-    private HBox createMenu() {
-        HBox menu = new HBox();
-        menu.getStyleClass().add("menu");
-        menu.setAlignment(Pos.CENTER);
-        menu.setPadding(new Insets(10));
-
-        Label newItem = new Label("New Chat");
-        Label historyItem = new Label("History");
-        menu.getChildren().addAll(newItem, historyItem);
-
-        return menu;
+    public SettingsComponent getSettings()
+    {
+        return this.settings;
     }
 
-
-    private Button createButton() {
-        Button button = new Button();
-        button.getStyleClass().add("talk-btn");
-        button.setMaxWidth(Double.MAX_VALUE);
-        button.setAlignment(Pos.CENTER);
-
-
-        String buttonText = resourceBundle.getString("ask") + " CrackedGPT";
-        button.setText(buttonText);
-
-
-        button.setOnAction(event -> {
-            String userInput = textArea.getText();
-            String selectedLanguage = language.getValue();
-
-            CrackGPTgui crackGPTgui = new CrackGPTgui();
-            String response = crackGPTgui.crackGPT(userInput, selectedLanguage);
-
-            textAreaOutput.setText(response);
-        });
-
-        return button;
-    }
-
-
-
-    private GridPane createSettingsComponent() {
-        GridPane gridPane = new GridPane();
-        gridPane.setPadding(new Insets(10, 0, 0, 0));
-        gridPane.setAlignment(Pos.CENTER);
-
-        this.languageLabel = new Label("Language");
-        this.languageLabel.getStyleClass().add("setting-label");
-        GridPane.setHalignment(this.languageLabel, HPos.CENTER);
-        gridPane.add(this.languageLabel, 0, 0);
-
-        language = new ComboBox<>();
-        language.getItems().addAll("English", "Spanish", "Dutch", "Norwegian", "Portuguese",
-                "German", "French", "Italian");
-        language.getStyleClass().add("setting-combo-box");
-        gridPane.add(language, 0, 1);
-        language.setValue("Dutch");
-
-        language.setOnAction(event -> languageChange());
-
-        loadBundle();
-
-        return gridPane;
-    }
-
-    private void languageChange() {
-        String selectedLanguage = language.getValue();
-        Locale newLocale;
-        switch (selectedLanguage) {
-            case "English":
-                newLocale = new Locale("en");
-                break;
-            case "Spanish":
-                newLocale = new Locale("es");
-                break;
-            case "Dutch":
-                newLocale = new Locale("nl");
-                break;
-            case "Norwegian":
-                newLocale = new Locale("no");
-                break;
-            case "Portuguese":
-                newLocale = new Locale("pt");
-                break;
-            case "German":
-                newLocale = new Locale("de");
-                break;
-            case "French":
-                newLocale = new Locale("fr");
-                break;
-            case "Italian":
-                newLocale = new Locale("it");
-                break;
-            default:
-                newLocale = Locale.getDefault();
-                break;
-        }
-        resourceBundle = ResourceBundle.getBundle("org.example.crackgui.messages", newLocale);
-        updateTexts();
-        updateButton();
-    }
-
-
-    private void updateButton() {
-        String buttonText = resourceBundle.getString("ask") + " CrackedGPT";
-        talkButton.setText(buttonText);
-    }
-
-
-    private void loadBundle() {
-        Locale defaultLocale = Locale.getDefault();
-        resourceBundle = ResourceBundle.getBundle("org.example.crackgui.messages", defaultLocale);
-        updateTexts();
-    }
-
-
-    private void updateTexts() {
-        this.languageLabel.setText(resourceBundle.getString("language"));
+    public void update() {
+        settings.update();
+        prompt.update();
     }
 }
