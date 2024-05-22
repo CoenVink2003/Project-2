@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ChatScene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/ChatScene.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPTgui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPTgui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPTgui.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPTgui.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="menu-deel-1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -50,7 +57,7 @@
     "Application.main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pctco/Desktop/Proj-2",
     "node.js.detected.package.eslint": "true",
