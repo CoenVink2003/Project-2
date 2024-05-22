@@ -2,6 +2,18 @@
     -fx-background: #2067DC;
 }
 
+.tab-pane .tab-header-area {
+    visibility: hidden;
+    -fx-max-height: 0.0;
+}
+
+.hidden-tab-header .tab-header-area {
+    visibility: hidden;
+    -fx-max-height: 0.0;
+}
+
+
+
 .crackgpt-label{
     -fx-font-size: 25px;
     -fix-font-weight: bold;

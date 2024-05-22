@@ -15,12 +15,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PromptComponent {
-    private CrackGPT application;
+    private ChatScene application;
     private Button talkButton;
 
     private static final String ai_url = "http://localhost:11434/api/generate";
 
-    public PromptComponent(CrackGPT application)
+    public PromptComponent(ChatScene application)
     {
         this.application = application;
     }

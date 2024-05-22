@@ -10,19 +10,20 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+
 public class ChatScene {
-    private TextArea textArea;
-    private TextArea textAreaOutput;
-    private Button talkButton;
+
     private SettingsComponent settings;
     private PromptComponent prompt;
-    private CrackGPT application;
 
-    public ChatScene(CrackGPT application) {
-        this.application = application;
-        textArea = new TextArea();
-        textAreaOutput = new TextArea();
-        talkButton = new Button();
+
+    public ResourceBundle language;
+
+    public ChatScene() {
+        this.language =  ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));
+
     }
 
     public VBox createBody(){
@@ -46,7 +47,7 @@ public class ChatScene {
         inputAreaPane.getChildren().add(inputArea);
 
         // Settings screen
-        settings = new SettingsComponent(application);
+        settings = new SettingsComponent(this);
         GridPane settingsPane = settings.generate();
 
         // AI output area
@@ -58,7 +59,7 @@ public class ChatScene {
         textAreaOutputPane.getChildren().add(outputArea);
 
         // Prompt button
-        prompt = new PromptComponent(application);
+        prompt = new PromptComponent(this);
         Button talkButton = prompt.generate(inputArea, settings.getLanguage(), outputArea);
         StackPane talkButtonPane = new StackPane();
         talkButtonPane.setPadding(new Insets(40, 20, 0, 20));
@@ -71,6 +72,17 @@ public class ChatScene {
 
         return body;
     }
+
+    public SettingsComponent getSettings()
+    {
+        return this.settings;
+    }
+
+    public void update() {
+        settings.update();
+        prompt.update();
+    }
+
 }
 
 

@@ -13,17 +13,17 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
-    private SettingsComponent settings;
-    private PromptComponent prompt;
 
-    MenuComponent menu = new MenuComponent(this);
+    MenuComponent menu = new MenuComponent();
     BorderPane root = new BorderPane();
 
     public ResourceBundle language;
 
     public void start(Stage stage) throws IOException {
-        this.language =  ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));
+
         menu.menuInitialize();
+
+
         Scene scene = createScene();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
@@ -34,17 +34,19 @@ public class CrackGPT extends Application {
         stage.show();
     }
 
+
     public Scene createScene() {
-        root = new BorderPane();
-        ChatScene body = new ChatScene(this);
+        //root = new BorderPane();
+        //ChatScene body = new ChatScene();
+        //root.setCenter(body.createBody());
+       // root.setTop(menuButton());
 
-        root.setCenter(body.createBody());
-        root.setTop(menuButton());
-
-        Scene scene = new Scene(root,800, 600);
+        Scene scene = new Scene(menu.getRoot(),800, 600);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         return scene;
     }
 
+    /*
     public HBox menuButton(){
         // Root layout
         HBox header = new HBox();
@@ -65,13 +67,6 @@ public class CrackGPT extends Application {
         return header;
     }
 
-    public SettingsComponent getSettings()
-    {
-        return this.settings;
-    }
+     */
 
-    public void update() {
-        settings.update();
-        prompt.update();
-    }
 }

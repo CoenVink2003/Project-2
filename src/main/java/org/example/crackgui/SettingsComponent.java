@@ -12,12 +12,12 @@ import java.util.ResourceBundle;
 
 public class SettingsComponent {
 
-    private CrackGPT application;
+    private ChatScene application;
     private Label languageLabel;
 
     private String language;
 
-    public SettingsComponent(CrackGPT application) {
+    public SettingsComponent(ChatScene application) {
         this.application = application;
     }
 

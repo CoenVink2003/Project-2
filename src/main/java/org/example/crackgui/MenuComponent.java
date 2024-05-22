@@ -16,17 +16,14 @@ public class MenuComponent {
     int chatCounter = 1;
     private ListView<String> chatHistoryListView;
 
-    private CrackGPT application;
+
 
     BorderPane root;
     public BorderPane getRoot() {
         return root;
     }
 
-    public MenuComponent(CrackGPT application)
-    {
-        this.application = application;
-    }
+
 
 
     private ListView<String> createChatHistoryListView(){
@@ -50,8 +47,8 @@ public class MenuComponent {
 
     private TabPane createChatTabPane(){
         TabPane tabPane = new TabPane();
-        //tabPane.setVisible(false);
-        ChatScene body = new ChatScene(application);
+        tabPane.getStyleClass().add("hidden-tab-header");
+        ChatScene body = new ChatScene();
 
         Tab tab = new Tab("Chat 1");
         tab.setContent(body.createBody());
@@ -67,52 +64,58 @@ public class MenuComponent {
 
         Button button = new Button("New Chat");
         button.setOnAction(e -> {
-            //chatTabPane.setVisible(false);
             chatCounter++;
             String chatTitle = "Chat " + chatCounter;
             chatHistoryListView.getItems().add(chatTitle);
 
-            ChatScene newBody = new ChatScene(application);
+            ChatScene newBody = new ChatScene();
 
             Tab newTab = new Tab(chatTitle);
             newTab.setContent(newBody.createBody());
             chatTabPane.getTabs().add(newTab);
+
+            chatTabPane.getStyleClass().add("hidden-tab-headers");
         });
         return button;
     }
 
+    public ToggleButton toggleButton(){
+        ToggleButton toggleHistoryButton = new ToggleButton("Toggle Chat History");
+        toggleHistoryButton.setSelected(true);
+        toggleHistoryButton.setOnAction(e -> {
+            if (toggleHistoryButton.isSelected()) {
+                root.setLeft(chatHistoryListView);
+            } else {
+                root.setLeft(null);
+            }
+        });
+        return toggleHistoryButton;
+    }
+
+
     public void menuInitialize(){
-        root= new BorderPane();
 
-        chatHistoryListView = createChatHistoryListView();
-        chatTabPane = createChatTabPane();
-        Button newChatButton = createNewChatButton();
+        if(root == null) {
+            root= new BorderPane();
 
-        HBox topMenu = new HBox();
-        topMenu.setPadding(new Insets(10));
-        //topMenu.setAlignment(Pos.CENTER);
-        topMenu.getChildren().add(newChatButton);
-/*
-        VBox leftMenu = new VBox(chatHistoryListView);
-        leftMenu.setPadding(new Insets(10));
-        leftMenu.setSpacing(10);
-        leftMenu.setPrefWidth(150);
+            chatHistoryListView = createChatHistoryListView();
+            chatTabPane = createChatTabPane();
+            Button newChatButton = createNewChatButton();
 
-        VBox mainContent = new VBox();
-        mainContent.setSpacing(10);
-        mainContent.setPadding(new Insets(10));
-        VBox.setVgrow(chatTabPane, Priority.ALWAYS);
+            HBox topMenu = new HBox();
+            topMenu.setPadding(new Insets(10));
+            //topMenu.setAlignment(Pos.CENTER);
+            topMenu.getChildren().add(newChatButton);
+            topMenu.getChildren().add(toggleButton());
 
-        mainContent.getChildren().addAll(topMenu, chatTabPane);
+            root.setTop(topMenu);
+            root.setCenter(chatTabPane);
+            root.setLeft(chatHistoryListView);
 
-        HBox content = new HBox();
-        content.getChildren().addAll(leftMenu, mainContent);
-        root.setCenter(content);
- */
-        root.setTop(topMenu);
-        root.setCenter(chatTabPane);
-        root.setLeft(chatHistoryListView);
+            chatTabPane.getSelectionModel().select(0);
 
+
+        }
     }
 
 
