@@ -19,6 +19,7 @@ public class SettingsComponent {
 
     public SettingsComponent(CrackGPT application) {
         this.application = application;
+        this.language = "Dutch";
     }
 
     public String getLanguage() {
