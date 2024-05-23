@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ChatScene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ChatScene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/ChatScene.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/ChatScene.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

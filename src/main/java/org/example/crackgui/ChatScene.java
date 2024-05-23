@@ -60,7 +60,7 @@ public class ChatScene {
 
         // Prompt button
         prompt = new PromptComponent(this);
-        Button talkButton = prompt.generate(inputArea, settings.getLanguage(), outputArea);
+        Button talkButton = prompt.generate(inputArea, outputArea);
         StackPane talkButtonPane = new StackPane();
         talkButtonPane.setPadding(new Insets(40, 20, 0, 20));
         talkButtonPane.getChildren().add(talkButton);

@@ -15,14 +15,12 @@ import java.util.ResourceBundle;
 public class CrackGPT extends Application {
 
     MenuComponent menu = new MenuComponent();
-    BorderPane root = new BorderPane();
 
     public ResourceBundle language;
 
     public void start(Stage stage) throws IOException {
 
         menu.menuInitialize();
-
 
         Scene scene = createScene();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -36,37 +34,10 @@ public class CrackGPT extends Application {
 
 
     public Scene createScene() {
-        //root = new BorderPane();
-        //ChatScene body = new ChatScene();
-        //root.setCenter(body.createBody());
-       // root.setTop(menuButton());
 
         Scene scene = new Scene(menu.getRoot(),800, 600);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         return scene;
     }
-
-    /*
-    public HBox menuButton(){
-        // Root layout
-        HBox header = new HBox();
-        header.setAlignment(Pos.CENTER_LEFT);
-
-        // Menu
-        Button hamburgerButton = new Button("\u2630");
-        hamburgerButton.getStyleClass().add("hamburger-button");
-        hamburgerButton.setOnAction(event -> {
-            if (root.getLeft() == null) {
-                root.setLeft(menu.getRoot());
-            } else {
-                root.setLeft(null);
-            }
-        });
-        header.getChildren().add(hamburgerButton);
-
-        return header;
-    }
-
-     */
 
 }
