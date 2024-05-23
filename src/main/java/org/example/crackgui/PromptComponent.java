@@ -15,17 +15,17 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class PromptComponent {
-    private ChatScene application;
+    private CrackGPT application;
     private Button talkButton;
 
     private static final String ai_url = "http://localhost:11434/api/generate";
 
-    public PromptComponent(ChatScene application)
+    public PromptComponent(CrackGPT application)
     {
         this.application = application;
     }
 
-    public Button generate(TextArea inputTextArea, TextArea outputTextArea)
+    public Button generate(TextArea inputTextArea, String selectedLanguage, TextArea outputTextArea)
     {
         Button button = new Button();
         button.getStyleClass().add("talk-btn");
@@ -63,7 +63,7 @@ public class PromptComponent {
             JSONObject request = new JSONObject();
             request.put("model", "gemma");
             request.put("prompt", prompt);
-            request.put("stream", false);
+            request.put("stream", true);
             URL url = new URL(ai_url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");

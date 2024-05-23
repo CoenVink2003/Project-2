@@ -12,14 +12,13 @@ import java.util.ResourceBundle;
 
 public class SettingsComponent {
 
-    private ChatScene application;
+    private CrackGPT application;
     private Label languageLabel;
 
     private String language;
 
-    public SettingsComponent(ChatScene application) {
+    public SettingsComponent(CrackGPT application) {
         this.application = application;
-        this.language = "Dutch";
     }
 
     public String getLanguage() {

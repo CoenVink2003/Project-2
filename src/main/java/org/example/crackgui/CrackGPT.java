@@ -63,7 +63,7 @@ public class CrackGPT extends Application {
 
         // Prompt button
         prompt = new PromptComponent(this);
-        Button talkButton = prompt.generate(inputArea, outputArea);
+        Button talkButton = prompt.generate(inputArea, settings.getLanguage(), outputArea);
         StackPane talkButtonPane = new StackPane();
         talkButtonPane.setPadding(new Insets(40, 20, 0, 20));
         talkButtonPane.getChildren().add(talkButton);
