@@ -25,7 +25,7 @@ public class PromptComponent {
         this.application = application;
     }
 
-    public Button generate(TextArea inputTextArea, String selectedLanguage, TextArea outputTextArea)
+    public Button generate(TextArea inputTextArea, TextArea outputTextArea)
     {
         Button button = new Button();
         button.getStyleClass().add("talk-btn");
@@ -63,7 +63,7 @@ public class PromptComponent {
             JSONObject request = new JSONObject();
             request.put("model", "gemma");
             request.put("prompt", prompt);
-            request.put("stream", true);
+            request.put("stream", false);
             URL url = new URL(ai_url);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("POST");
