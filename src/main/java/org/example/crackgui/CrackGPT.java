@@ -9,14 +9,18 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
     private SettingsComponent settings;
     private PromptComponent prompt;
-
+    public ArrayList<HashMap<String, ArrayList<String>>> chats = new ArrayList<HashMap<String, ArrayList<String>>>();
     public ResourceBundle language;
+    public int currentChat;
 
     public void start(Stage stage) throws IOException {
         this.language =  ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));;
@@ -79,7 +83,7 @@ public class CrackGPT extends Application {
         hamburgerButton.getStyleClass().add("hamburger-button");
          hamburgerButton.setOnAction(event -> {
              if (root.getLeft() == null) {
-                 root.setLeft(menu.generate());
+                 root.setLeft(menu.generate(root.widthProperty().multiply(0.3)));
              } else {
                  root.setLeft(null);
              }

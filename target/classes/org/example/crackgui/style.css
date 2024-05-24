@@ -45,10 +45,29 @@
 
 .menu {
     -fx-spacing: 10px;
-    -fx-padding: 10px;
 }
 
 .root {
     -fx-background-color: #2067DC;
 }
 
+.chatbtn{
+    -fx-background-color: #82ADF4;
+}
+
+.chatbtn:hover{
+    -fx-opacity: 0.75;
+    -fx-background-color: #16499e;
+    -fx-text-fill: white;
+}
+
+.scroll-pane .scroll-bar:vertical, .scroll-pane .scroll-bar:horizontal {
+    -fx-opacity: 0;
+    -fx-pref-width: 0;
+    -fx-pref-height: 0;
+}
+
+.menu-scrollbar{
+    -fx-background: transparent; /* Light gray background color for ScrollPane */
+    -fx-background-color: transparent;
+}
