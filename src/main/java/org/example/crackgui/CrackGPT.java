@@ -16,10 +16,13 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
+    public BorderPane root;
     private SettingsComponent settings;
     private PromptComponent prompt;
+    private MenuComponent menuComponent;
     public ArrayList<HashMap<String, ArrayList<String>>> chats = new ArrayList<HashMap<String, ArrayList<String>>>();
     public ResourceBundle language;
+    public ScrollPane menu;
     public int currentChat;
 
     public void start(Stage stage) throws IOException {
@@ -73,17 +76,18 @@ public class CrackGPT extends Application {
         talkButtonPane.getChildren().add(talkButton);
 
         // Root layout
-        BorderPane root = new BorderPane();
+        root = new BorderPane();
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
 
         // Menu
-        MenuComponent menu = new MenuComponent(this);
+        menuComponent = new MenuComponent(this);
         Button hamburgerButton = new Button("\u2630");
         hamburgerButton.getStyleClass().add("hamburger-button");
          hamburgerButton.setOnAction(event -> {
              if (root.getLeft() == null) {
-                 root.setLeft(menu.generate(root.widthProperty().multiply(0.3)));
+                 this.menu = menuComponent.generate(root.widthProperty().multiply(0.3));
+                 root.setLeft(this.menu);
              } else {
                  root.setLeft(null);
              }
@@ -110,5 +114,8 @@ public class CrackGPT extends Application {
     public void update() {
         settings.update();
         prompt.update();
+
+        this.menu = menuComponent.generate(root.widthProperty().multiply(0.3));
+        root.setLeft(this.menu);
     }
 }

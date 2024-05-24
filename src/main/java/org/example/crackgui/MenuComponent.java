@@ -66,6 +66,6 @@ public class MenuComponent {
         chatData.put("name", chatNaam);
         chatData.put("dialog", new ArrayList<String>());
         this.application.chats.add(chatData);
-
+        this.application.update();
     }
 }
