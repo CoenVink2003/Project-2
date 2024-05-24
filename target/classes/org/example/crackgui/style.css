@@ -1,30 +1,38 @@
-.body{
+.body {
     -fx-background: #2067DC;
 }
 
-.crackgpt-label{
+.crackgpt-label {
     -fx-font-size: 25px;
     -fix-font-weight: bold;
     -fx-padding: 10px;
+    -fx-text-fill: white;
 }
 
-.text-area{
-    -fx-font-size: 16px;
+.text-area-input {
+    -fx-font-size: 15px;
+    -fx-pref-height: 50px;
     -fx-control-inner-background: #82ADF4;
 }
 
-.setting-label{
+.text-area-output {
+    -fx-font-size: 15px;
+    -fx-pref-height: 200px;
+    -fx-control-inner-background: #82ADF4;
+}
+
+.setting-label {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
 }
 
-.setting-combo-box{
+.setting-combo-box {
     -fx-font-size: 16px;
     -fix-control-inner-background: #82ADF4;
     -fx-background-color: #82ADF4;
 }
 
-.talk-btn{
+.talk-btn {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-background-color: #82ADF4;
@@ -32,7 +40,7 @@
     -fx-padding: 0;
 }
 
-.talk-btn:pressed{
+.talk-btn:pressed {
     -fx-opacity: 0.75;
 }
 
@@ -51,11 +59,11 @@
     -fx-background-color: #2067DC;
 }
 
-.chatbtn{
+.chatbtn {
     -fx-background-color: #82ADF4;
 }
 
-.chatbtn:hover{
+.chatbtn:hover {
     -fx-opacity: 0.75;
     -fx-background-color: #16499e;
     -fx-text-fill: white;
@@ -67,7 +75,31 @@
     -fx-pref-height: 0;
 }
 
-.menu-scrollbar{
-    -fx-background: transparent; /* Light gray background color for ScrollPane */
+.menu-scrollbar {
+    -fx-background: transparent;
     -fx-background-color: transparent;
+}
+
+.output-bubble {
+    -fx-background-color: #DCF8C6;
+    -fx-padding: 10;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-pref-height: 150px;
+    -fx-wrap-text: true;
+
+}
+
+
+.input-bubble {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 10;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-pref-height: 50px;
+    -fx-wrap-text: true;
+}
+
+.hbox-spacing {
+    -fx-spacing: 10;
 }

@@ -3,6 +3,8 @@ package org.example.crackgui;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -17,45 +19,59 @@ import java.net.URL;
 public class PromptComponent {
     private CrackGPT application;
     private Button talkButton;
+    private VBox chatContainer;
 
     private static final String ai_url = "http://localhost:11434/api/generate";
 
-    public PromptComponent(CrackGPT application)
-    {
+    public PromptComponent(CrackGPT application, VBox chatContainer) {
         this.application = application;
+        this.chatContainer = chatContainer;
     }
 
-    public Button generate(TextArea inputTextArea, String selectedLanguage, TextArea outputTextArea)
-    {
+    public Button generate(TextArea inputTextArea, String selectedLanguage) {
         Button button = new Button();
         button.getStyleClass().add("talk-btn");
         button.setMaxWidth(Double.MAX_VALUE);
         button.setAlignment(Pos.CENTER);
 
-
         String buttonText = this.application.language.getString("ask") + " CrackedGPT";
         button.setText(buttonText);
 
-
         button.setOnAction(event -> {
             String input = inputTextArea.getText();
+            inputTextArea.clear();
 
+            // Add input bubble to chat
+            TextArea inputBubble = new TextArea(input);
+            inputBubble.setWrapText(true);
+            inputBubble.setEditable(false);
+            inputBubble.getStyleClass().add("input-bubble");
+            HBox inputBubbleBox = new HBox(inputBubble);
+            inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
+            chatContainer.getChildren().add(inputBubbleBox);
+
+            // Call the API and get the response
             String response = prompt(input);
 
-            outputTextArea.setText(response);
+            // Add output bubble to chat
+            TextArea outputBubble = new TextArea(response);
+            outputBubble.setWrapText(true);
+            outputBubble.setEditable(false);
+            outputBubble.getStyleClass().add("output-bubble");
+            HBox outputBubbleBox = new HBox(outputBubble);
+            outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
+            chatContainer.getChildren().add(outputBubbleBox);
         });
 
         this.talkButton = button;
         return button;
     }
 
-    public void update()
-    {
+    public void update() {
         this.talkButton.setText(this.application.language.getString("ask") + " CrackedGPT");
     }
 
-    public String prompt(String input)
-    {
+    public String prompt(String input) {
         try {
             String prompt = input + "\nPlease answer everything in " + this.application.getSettings().getLanguage() + ".";
 
@@ -82,11 +98,9 @@ public class PromptComponent {
                     String inputLine;
 
                     while ((inputLine = in.readLine()) != null) {
-                        System.out.println(inputLine);
                         response.append(inputLine);
                     }
 
-                    System.out.println(response);
                     return parseResponse(response.toString());
                 }
             } else {
@@ -112,7 +126,6 @@ public class PromptComponent {
         Object responseObject = jsonResponse.get("response");
 
         if (responseObject != null) {
-            System.out.println(responseObject.toString());
             return responseObject.toString();
         } else {
             return "Server response is missing or invalid.";
