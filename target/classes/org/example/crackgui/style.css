@@ -1,5 +1,10 @@
+*
+{
+    -fx-background-color: transparent;
+}
+
 .body {
-    -fx-background: #2067DC;
+    -fx-background-image: url("HD.jpg");
 }
 
 .crackgpt-label {
@@ -21,23 +26,20 @@
     -fx-control-inner-background: #82ADF4;
 }
 
-.setting-label {
-    -fx-font-size: 16px;
-    -fx-font-weight: bold;
-}
-
 .setting-combo-box {
     -fx-font-size: 16px;
     -fix-control-inner-background: #82ADF4;
-    -fx-background-color: #82ADF4;
+    -fix-control-outer-background: #82ADF4;
+    -fx-background-color: #DCF8C6;
+    -fx-text-fill: white;
 }
 
 .talk-btn {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-background-color: #82ADF4;
-    -fx-text-fill: white;
     -fx-padding: 0;
+    -fx-background-color: #DCF8C6;
+    -fx-text-fill: black;
 }
 
 .talk-btn:pressed {
@@ -48,7 +50,7 @@
     -fx-background-color: transparent;
     -fx-font-size: 20px;
     -fx-border-width: 0;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
 }
 
 .menu {
@@ -60,12 +62,11 @@
 }
 
 .chatbtn {
-    -fx-background-color: #82ADF4;
+    -fx-background-color: #DCF8C6;
 }
-
 .chatbtn:hover {
     -fx-opacity: 0.75;
-    -fx-background-color: #16499e;
+    -fx-background-color: #5ca722;
     -fx-text-fill: white;
 }
 
@@ -81,23 +82,35 @@
 }
 
 .output-bubble {
-    -fx-background-color: #DCF8C6;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
     -fx-padding: 10;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-pref-height: 150px;
     -fx-wrap-text: true;
-
+    -fx-pref-width: 400px;
 }
 
 
 .input-bubble {
-    -fx-background-color: #FFFFFF;
+    -fx-background-color: #DCF8C6;
+    -fx-text-fill: black;
     -fx-padding: 10;
     -fx-background-radius: 10;
     -fx-border-radius: 10;
-    -fx-pref-height: 50px;
     -fx-wrap-text: true;
+    -fx-pref-width: 400px;
+}
+
+.promptInput {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: black;
+    -fx-pref-height: 25px;
+    -fx-padding: 2;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-wrap-text: true;
+    -fx-fit-to-height: true;
 }
 
 .hbox-spacing {

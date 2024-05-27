@@ -1,6 +1,5 @@
 package org.example.crackgui;
 
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
@@ -18,6 +17,7 @@ public class SettingsComponent {
     private String language;
 
     public SettingsComponent(CrackGPT application) {
+        this.language = "Dutch";
         this.application = application;
     }
 
@@ -30,14 +30,18 @@ public class SettingsComponent {
         gridPane.setPadding(new Insets(10, 0, 0, 0));
         gridPane.setAlignment(Pos.CENTER);
 
-        languageLabel = new Label("Language");
-        languageLabel.getStyleClass().add("setting-label");
-        GridPane.setHalignment(languageLabel, HPos.CENTER);
-        gridPane.add(languageLabel, 0, 0);
-
         ComboBox<String> languageSelect = new ComboBox<>();
-        languageSelect.getItems().addAll("English", "Spanish", "Dutch", "Norwegian", "Portuguese",
-                "German", "French", "Italian");
+
+        languageSelect.getItems().add("English");
+        languageSelect.getItems().add("Spanish");
+        languageSelect.getItems().add("Dutch");
+        languageSelect.getItems().add("Norwegian");
+        languageSelect.getItems().add("Portuguese");
+        languageSelect.getItems().add("German");
+        languageSelect.getItems().add("French");
+        languageSelect.getItems().add("Italian");
+
+
         languageSelect.getStyleClass().add("setting-combo-box");
         gridPane.add(languageSelect, 0, 1);
         languageSelect.setValue("Dutch");
@@ -82,12 +86,5 @@ public class SettingsComponent {
 
         // Set the new language
         this.application.language = ResourceBundle.getBundle("org.example.crackgui.messages", newLocale);
-
-        // Update all texts to the new language
-        this.application.update();
-    }
-
-    public void update() {
-        this.languageLabel.setText(this.application.language.getString("language"));
     }
 }

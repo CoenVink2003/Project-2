@@ -5,18 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/.name" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/libraries/javafx_sdk_21_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Project-2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/HD.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/SettingsComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/style.css" afterDir="false" />
+    </list>
+    <list id="80733ee7-7d89-477a-9786-d5ec94732f46" name="Changes by Coen" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" afterDir="false" />
+    </list>
+    <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" afterDir="false" />
+    </list>
+    <list id="35cbed47-457f-42fd-ae04-7d81c72daec9" name="Changes by Lenovo" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
     </list>
-    <list id="80733ee7-7d89-477a-9786-d5ec94732f46" name="Changes by Coen" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,11 +56,91 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CoenVink2003/Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;8ca8c563-f3e4-4686-927e-a16395c789a0&quot;
+    &quot;accountId&quot;: &quot;4af3a070-0df2-4980-ab98-6105d6d9323c&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java">
+      <ranges>
+        <range start1="7" end1="8" start2="7" end2="7" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="47" end1="48" start2="46" end2="47" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="51" end1="51" start2="50" end2="52" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="60" end1="62" start2="61" end2="61" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="78" end1="79" start2="77" end2="78" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="81" end1="82" start2="80" end2="81" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="84" end1="84" start2="83" end2="84" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="96" end1="100" start2="96" end2="104" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="101" end1="102" start2="105" end2="110" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="103" end1="104" start2="111" end2="112" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="112" end1="113" start2="120" end2="120" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="114" end1="116" start2="121" end2="127" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="119" end1="120" start2="130" end2="131" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="123" end1="123" start2="134" end2="145" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="129" end1="130" start2="151" end2="151" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="131" end1="134" start2="152" end2="152" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="135" end1="135" start2="153" end2="159" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java">
+      <ranges>
+        <range start1="4" end1="4" start2="4" end2="5" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="43" end1="49" start2="44" end2="48" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="56" end1="61" start2="55" end2="59" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java">
+      <ranges>
+        <range start1="6" end1="7" start2="6" end2="6" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="8" end1="9" start2="7" end2="7" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="11" end1="12" start2="9" end2="9" changelist="35cbed47-457f-42fd-ae04-7d81c72daec9" />
+        <range start1="28" end1="29" start2="25" end2="26" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="30" end1="31" start2="27" end2="29" changelist="35cbed47-457f-42fd-ae04-7d81c72daec9" />
+        <range start1="32" end1="33" start2="30" end2="32" changelist="35cbed47-457f-42fd-ae04-7d81c72daec9" />
+        <range start1="58" end1="59" start2="57" end2="58" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="68" end1="69" start2="67" end2="68" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="2" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="20" end1="20" start2="19" end2="20" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="32" end1="37" start2="32" end2="32" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="38" end1="40" start2="33" end2="44" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="84" end1="91" start2="88" end2="88" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css">
+      <ranges>
+        <range start1="0" end1="0" start2="0" end2="5" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="1" end1="2" start2="6" end2="7" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="22" end1="27" start2="27" end2="27" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="31" end1="32" start2="31" end2="34" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="37" end1="39" start2="39" end2="39" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="40" end1="40" start2="40" end2="42" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="50" end1="51" start2="52" end2="53" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="62" end1="63" start2="64" end2="65" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="64" end1="65" start2="66" end2="66" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="67" end1="68" start2="68" end2="69" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="83" end1="84" start2="84" end2="86" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="87" end1="88" start2="89" end2="89" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="89" end1="90" start2="90" end2="91" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="94" end1="95" start2="95" end2="97" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="98" end1="99" start2="100" end2="100" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="100" end1="100" start2="101" end2="102" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+        <range start1="101" end1="101" start2="103" end2="114" changelist="4803688b-8e7b-4a00-b377-8ae59c1ca08e" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="openjdk-22" />
+        <option name="workspaceImportForciblyTurnedOn" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -56,30 +151,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CrackGPT.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CrackGPTOld.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/timobrouwer/Documents/HHS/Github/Project-2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CrackGPT.executor": "Run",
+    "Application.CrackGPTOld.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/timobrouwer/Documents/HHS/Github/Project-2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Language Defaults",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/org/example/crackgui" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Project-2" />
@@ -122,6 +222,11 @@
       <workItem from="1716556849496" duration="36000" />
       <workItem from="1716556910610" duration="20000" />
       <workItem from="1716556936336" duration="29000" />
+      <workItem from="1716558351300" duration="16000" />
+      <workItem from="1716558398957" duration="153000" />
+      <workItem from="1716563131142" duration="247000" />
+      <workItem from="1716716369192" duration="92000" />
+      <workItem from="1716798918015" duration="6359000" />
     </task>
     <servers />
   </component>

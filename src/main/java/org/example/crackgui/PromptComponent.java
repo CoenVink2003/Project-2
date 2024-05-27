@@ -2,6 +2,7 @@ package org.example.crackgui;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -41,12 +42,10 @@ public class PromptComponent {
             String input = inputTextArea.getText();
             inputTextArea.clear();
 
-            // Add input bubble to chat
-            TextArea inputBubble = new TextArea(input);
-            inputBubble.setWrapText(true);
-            inputBubble.setEditable(false);
-            inputBubble.getStyleClass().add("input-bubble");
-            HBox inputBubbleBox = new HBox(inputBubble);
+            Label inputLabel = new Label();
+            inputLabel.setText(input);
+            inputLabel.getStyleClass().add("input-bubble");
+            HBox inputBubbleBox = new HBox(inputLabel);
             inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
             chatContainer.getChildren().add(inputBubbleBox);
 
@@ -54,11 +53,10 @@ public class PromptComponent {
             String response = prompt(input);
 
             // Add output bubble to chat
-            TextArea outputBubble = new TextArea(response);
-            outputBubble.setWrapText(true);
-            outputBubble.setEditable(false);
-            outputBubble.getStyleClass().add("output-bubble");
-            HBox outputBubbleBox = new HBox(outputBubble);
+            Label output = new Label();
+            output.setText(response);
+            output.getStyleClass().add("output-bubble");
+            HBox outputBubbleBox = new HBox(output);
             outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
             chatContainer.getChildren().add(outputBubbleBox);
         });

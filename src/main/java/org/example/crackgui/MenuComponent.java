@@ -4,12 +4,9 @@ import javafx.beans.binding.DoubleBinding;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -26,11 +23,13 @@ public class MenuComponent {
         menu.getStyleClass().add("menu");
         menu.setAlignment(Pos.TOP_CENTER);
         menu.setPadding(new Insets(10));
-        menu.setSpacing(10); // Add spacing between buttons
+        menu.setSpacing(10);
 
-        for (HashMap<String, ArrayList<String>> chat : this.application.chats) {
+        for (int i = 0; i < this.application.chats.size(); i++) {
+            HashMap<String, ArrayList<String>> chat = this.application.chats.get(i);
             Button historyItem = new Button(chat.get("name").get(0));
-            // historyItem.setOnAction(event -> HISTORY);
+            final int index = i; // Capture the index
+            historyItem.setOnAction(event -> changeChat(index));
             historyItem.setMaxWidth(Double.MAX_VALUE);
             historyItem.getStyleClass().add("chatbtn");
             menu.getChildren().add(historyItem);
@@ -56,7 +55,7 @@ public class MenuComponent {
     public void changeChat(int chatIndex)
     {
         this.application.currentChat = chatIndex;
-        this.application.update();
+        this.application.updateMenu();
     }
 
     public void newChat() {
@@ -66,6 +65,6 @@ public class MenuComponent {
         chatData.put("name", chatNaam);
         chatData.put("dialog", new ArrayList<String>());
         this.application.chats.add(chatData);
-        this.application.update();
+        this.application.updateMenu();
     }
 }

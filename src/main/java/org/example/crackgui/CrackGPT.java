@@ -5,7 +5,6 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.*;
@@ -45,10 +44,12 @@ public class CrackGPT extends Application {
 
     private Scene createScene(int width, int height) {
         VBox body = createBody();
-        HBox header = createHeader();
+        VBox header = createHeader();
         VBox bottomBox = createBottomBox();
 
         root = new BorderPane();
+        root.getStyleClass().add("body");
+
         root.setTop(header);
         root.setCenter(body);
         root.setBottom(bottomBox);
@@ -58,8 +59,6 @@ public class CrackGPT extends Application {
 
     private VBox createBody() {
         VBox body = new VBox();
-        body.setStyle("-fx-background-color: #2067DC;");
-        body.getStyleClass().add("body");
 
         VBox chatContainer = new VBox();
         chatContainer.setPadding(new Insets(20, 15, 20, 15));
@@ -76,11 +75,12 @@ public class CrackGPT extends Application {
         return body;
     }
 
-    private HBox createHeader() {
+    private VBox createHeader() {
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER);
-        header.setPadding(new Insets(10)); // Add padding for better appearance
+        header.setPadding(new Insets(10));
         header.setSpacing(10);
+
 
         menuComponent = new MenuComponent(this);
         Button hamburgerButton = new Button("\u2630");
@@ -94,14 +94,22 @@ public class CrackGPT extends Application {
             }
         });
 
-        Region leftSpacer = new Region();
-        Region rightSpacer = new Region();
-        HBox.setHgrow(leftSpacer, Priority.ALWAYS);
-        HBox.setHgrow(rightSpacer, Priority.ALWAYS);
 
-        header.getChildren().addAll(hamburgerButton, leftSpacer, rightSpacer);
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        return header;
+
+        GridPane settingsDialog = settings.generate();
+        settingsDialog.setAlignment(Pos.TOP_RIGHT);
+
+
+        header.getChildren().addAll(hamburgerButton, spacer, settingsDialog);
+
+
+        VBox headerBox = new VBox();
+        headerBox.getChildren().add(header);
+
+        return headerBox;
     }
 
     private VBox createBottomBox() {
@@ -110,16 +118,30 @@ public class CrackGPT extends Application {
         bottomBox.setPadding(new Insets(20, 15, 20, 15));
         bottomBox.setSpacing(10);
 
-        GridPane settingsPane = settings.generate();
         TextArea inputArea = new TextArea();
-        inputArea.setWrapText(true);
-        inputArea.getStyleClass().add("input-bubble");
+        inputArea.getStyleClass().add("promptInput");
+
+        inputArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            adjustTextAreaHeight(inputArea);
+        });
+
 
         Button talkButton = prompt.generate(inputArea, settings.getLanguage());
 
-        bottomBox.getChildren().addAll(settingsPane, inputArea, talkButton);
+        bottomBox.getChildren().addAll(inputArea, talkButton);
 
         return bottomBox;
+    }
+
+    private void adjustTextAreaHeight(TextArea textArea) {
+        String text = textArea.getText();
+        int numLines = text.split("\n").length;
+
+        double lineHeight = textArea.getFont().getSize() * 1.2;
+        double padding = 20;  // Add some padding
+        double newHeight = lineHeight * numLines + padding;
+
+        textArea.setPrefHeight(newHeight);
     }
 
     public SettingsComponent getSettings() {
@@ -127,9 +149,11 @@ public class CrackGPT extends Application {
     }
 
     public void update() {
-        settings.update();
         prompt.update();
+    }
 
+    public void updateMenu()
+    {
         this.menu = menuComponent.generate(root.widthProperty().multiply(0.3));
         root.setLeft(this.menu);
     }
