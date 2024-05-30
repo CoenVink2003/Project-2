@@ -7,6 +7,7 @@ import org.json.JSONTokener;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,32 +31,50 @@ public class ElasticSearch {
         if (files != null) {
             for (File file : files) {
                 try {
+                    System.out.println("Reading file: " + file.getAbsolutePath());
+
                     FileInputStream fis = new FileInputStream(file);
-                    JSONTokener tokener = new JSONTokener(fis);
-                    JSONObject jsonDocument = new JSONObject(tokener);
+                    StringBuilder fileContent = new StringBuilder();
+                    int character;
+                    while ((character = fis.read()) != -1) {
+                        fileContent.append((char) character);
+                    }
 
-                    JSONArray foundDocumentation = jsonDocument.getJSONArray("foundDocumentation");
+                    String jsonContent = fileContent.toString().trim();
 
-                    for (int i = 0; i < foundDocumentation.length(); i++) {
-                        JSONObject documentationObject = foundDocumentation.getJSONObject(i);
-                        JSONArray keywords = documentationObject.getJSONArray("keywords");
-                        String documentation = documentationObject.getString("documentation");
+                    // Check if the content is not empty and starts with '{' (valid JSON object)
+                    if (!jsonContent.isEmpty() && jsonContent.startsWith("{")) {
+                        JSONObject jsonDocument = new JSONObject(jsonContent);
 
-                        // Add documentation to the list
-                        documentationList.add(new JSONObject(documentation));
+                        JSONArray foundDocumentation = jsonDocument.getJSONArray("foundDocumentation");
 
-                        // Add each keyword-documentation pair to the map
-                        for (int j = 0; j < keywords.length(); j++) {
-                            keywordInfoMap.put(keywords.getString(j), documentation);
+                        for (int i = 0; i < foundDocumentation.length(); i++) {
+                            JSONObject documentationObject = foundDocumentation.getJSONObject(i);
+                            JSONArray keywords = documentationObject.getJSONArray("keywords");
+                            String documentation = documentationObject.getString("documentation");
+
+                            // Add documentation to the list
+                            documentationList.add(new JSONObject(documentation));
+
+                            // Add each keyword-documentation pair to the map
+                            for (int j = 0; j < keywords.length(); j++) {
+                                keywordInfoMap.put(keywords.getString(j), documentation);
+                            }
                         }
+                    } else {
+                        System.err.println("Invalid JSON content in file: " + file.getAbsolutePath());
                     }
                 } catch (FileNotFoundException e) {
                     System.err.println("File not found: " + file.getAbsolutePath());
+                    // Log the error or handle it according to your application's requirements
+                } catch (IOException e) {
+                    System.err.println("Error reading file: " + file.getAbsolutePath());
                     // Log the error or handle it according to your application's requirements
                 }
             }
         }
     }
+
 
     public String processInput(String input) {
         StringBuilder query = new StringBuilder(input);
