@@ -17,10 +17,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
-    public BorderPane root;
+    public BorderPane root = new BorderPane();
     private SettingsComponent settings;
     private PromptComponent prompt;
-    private MenuComponent menuComponent;
+    private MenuComponent menuComponent = new MenuComponent(this);
     public ArrayList<HashMap<String, ArrayList<String>>> chats = new ArrayList<>();
     public ResourceBundle language;
     public ScrollPane menu;
@@ -31,6 +31,9 @@ public class CrackGPT extends Application {
 
         // Initialize the settings component before calling prompScreen
         this.settings = new SettingsComponent(this);
+
+        menuComponent.newChat();
+        this.currentChat = 1;
 
         Scene scene = createScene(800, 600);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
@@ -47,7 +50,6 @@ public class CrackGPT extends Application {
         VBox header = createHeader();
         VBox bottomBox = createBottomBox();
 
-        root = new BorderPane();
         root.getStyleClass().add("body");
 
         root.setTop(header);
@@ -81,8 +83,6 @@ public class CrackGPT extends Application {
         header.setPadding(new Insets(10));
         header.setSpacing(10);
 
-
-        menuComponent = new MenuComponent(this);
         Button hamburgerButton = new Button("\u2630");
         hamburgerButton.getStyleClass().add("hamburger-button");
         hamburgerButton.setOnAction(event -> {
@@ -119,7 +119,6 @@ public class CrackGPT extends Application {
         bottomBox.setSpacing(10);
 
         TextArea inputArea = prompt.generate();
-
 
         bottomBox.getChildren().addAll(inputArea);
 

@@ -25,6 +25,17 @@ public class MenuComponent {
         menu.setPadding(new Insets(10));
         menu.setSpacing(10);
 
+        Button newItem = new Button("New Chat");
+        newItem.setOnAction(event -> {
+            newChat();
+            this.application.updateMenu();
+        });
+        newItem.getStyleClass().add("chatbtn");
+        newItem.setMaxWidth(Double.MAX_VALUE);
+        newItem.setTextAlignment(TextAlignment.CENTER);
+        newItem.setAlignment(Pos.CENTER);
+        menu.getChildren().add(newItem);
+
         for (int i = 0; i < this.application.chats.size(); i++) {
             HashMap<String, ArrayList<String>> chat = this.application.chats.get(i);
             Button historyItem = new Button(chat.get("name").get(0));
@@ -35,13 +46,6 @@ public class MenuComponent {
             menu.getChildren().add(historyItem);
         }
 
-        Button newItem = new Button("New Chat");
-        newItem.setOnAction(event -> newChat());
-        newItem.getStyleClass().add("chatbtn");
-        newItem.setMaxWidth(Double.MAX_VALUE);
-        newItem.setTextAlignment(TextAlignment.CENTER);
-        newItem.setAlignment(Pos.CENTER);
-        menu.getChildren().add(newItem);
 
         ScrollPane menuRoot = new ScrollPane(menu);
         menuRoot.setFitToWidth(true);
@@ -61,10 +65,10 @@ public class MenuComponent {
     public void newChat() {
         HashMap<String, ArrayList<String>> chatData = new HashMap<String, ArrayList<String>>();
         ArrayList<String> chatNaam = new ArrayList<String>();
-        chatNaam.add("Chat 1");
+        int number = this.application.chats.size() + 1;
+        chatNaam.add("Chat " + number);
         chatData.put("name", chatNaam);
         chatData.put("dialog", new ArrayList<String>());
-        this.application.chats.add(chatData);
-        this.application.updateMenu();
+        this.application.chats.addFirst(chatData);
     }
 }

@@ -55,6 +55,7 @@
 
 .menu {
     -fx-spacing: 10px;
+    -fx-background-color: white;
 }
 
 .root {
