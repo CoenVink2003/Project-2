@@ -6,22 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
     </list>
-    <list id="80733ee7-7d89-477a-9786-d5ec94732f46" name="Changes by Coen" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
+    <list id="c7453ee4-6501-469d-a4af-8c6e199e21f3" name="Changes by Coen" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
     </list>
-    <list id="88cbaac0-a473-4efb-a221-dc53e80c1be1" name="Changes by Gebruiker" comment="" />
     <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="" />
+    <list id="50095e6d-2892-4aa1-af8a-f6ec22168146" name="Changes by Lenovo" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +40,14 @@
     &quot;accountId&quot;: &quot;4af3a070-0df2-4980-ab98-6105d6d9323c&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java">
+      <ranges>
+        <range start1="139" end1="140" start2="139" end2="140" changelist="c7453ee4-6501-469d-a4af-8c6e199e21f3" />
+        <range start1="161" end1="162" start2="161" end2="161" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -72,30 +71,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.CrackGPT.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CrackGPTOld.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/timobrouwer/Documents/HHS/Github/Project-2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors.Language Defaults&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.CrackGPT.executor": "Run",
+    "Application.CrackGPTOld.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.main.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/timobrouwer/Documents/HHS/Github/Project-2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/org/example/crackgui" />
@@ -150,7 +149,7 @@
       <workItem from="1716798918015" duration="7886000" />
       <workItem from="1716813271699" duration="239000" />
       <workItem from="1716813651534" duration="314000" />
-      <workItem from="1717064886526" duration="5614000" />
+      <workItem from="1717064886526" duration="7446000" />
     </task>
     <servers />
   </component>

@@ -137,7 +137,7 @@ public class PromptComponent {
 
             JSONObject request = new JSONObject();
             request.put("model", "gemma");
-            request.put("prompt", input);
+            request.put("prompt", input + ". Antwoord in het " + application.getSettings().getLanguage());
             request.put("stream", true);
 
             try (OutputStream os = con.getOutputStream()) {
