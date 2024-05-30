@@ -6,13 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/crackgui/Documentation.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/keys.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/Documentation.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
     </list>
-    <list id="c7453ee4-6501-469d-a4af-8c6e199e21f3" name="Changes by Coen" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
-    </list>
+    <list id="f7c0b34f-acc2-4385-912f-8bea3bdb060f" name="Changes by Coen" comment="" />
     <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="" />
-    <list id="50095e6d-2892-4aa1-af8a-f6ec22168146" name="Changes by Lenovo" comment="" />
+    <list id="50095e6d-2892-4aa1-af8a-f6ec22168146" name="Changes by Lenovo" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,10 +47,20 @@
   }
 }</component>
   <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java">
       <ranges>
-        <range start1="139" end1="140" start2="139" end2="140" changelist="c7453ee4-6501-469d-a4af-8c6e199e21f3" />
-        <range start1="161" end1="162" start2="161" end2="161" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="2" end1="2" start2="2" end2="13" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="4" end1="4" start2="15" end2="24" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="5" end1="7" start2="25" end2="28" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="8" end1="9" start2="29" end2="35" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="10" end1="10" start2="36" end2="60" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="11" end1="12" start2="61" end2="62" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="14" end1="18" start2="64" end2="67" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="23" end1="31" start2="72" end2="75" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="32" end1="36" start2="76" end2="77" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="38" end1="44" start2="79" end2="82" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="45" end1="54" start2="83" end2="92" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="55" end1="60" start2="93" end2="93" changelist="50095e6d-2892-4aa1-af8a-f6ec22168146" />
       </ranges>
     </file>
   </component>
@@ -97,7 +113,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/example/crackgui" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/crackgui" />
     </key>
   </component>
   <component name="RunManager">
@@ -149,7 +167,7 @@
       <workItem from="1716798918015" duration="7886000" />
       <workItem from="1716813271699" duration="239000" />
       <workItem from="1716813651534" duration="314000" />
-      <workItem from="1717064886526" duration="7446000" />
+      <workItem from="1717064886526" duration="9344000" />
     </task>
     <servers />
   </component>

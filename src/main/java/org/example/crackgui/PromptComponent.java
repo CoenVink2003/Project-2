@@ -48,11 +48,14 @@ public class PromptComponent {
     private void handleUserInput(TextArea inputArea) {
         String input = inputArea.getText().trim();
         if (!input.isEmpty()) {
+            ElasticSearch elasticSearch = new ElasticSearch();
+            String processedInput = elasticSearch.processInput(input);
             inputArea.clear();
             addInputBubble(input);
-            promptAsync(input);
+            promptAsync(processedInput); // Use processed input for AI prompt
         }
     }
+
 
     private void addInputBubble(String input) {
         Label inputLabel = new Label(input);

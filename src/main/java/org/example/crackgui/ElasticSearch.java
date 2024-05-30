@@ -1,61 +1,94 @@
 package org.example.crackgui;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ElasticSearch {
+    private final String folderPath = "src/main/resources/bijlagen";
+    private final Map<String, String> keywordInfoMap;
+    private final List<JSONObject> documentationList;
 
-    private final String fileName = "Documentation.json";
-    private Map<String, String> keywordInfoMap;
+    public ElasticSearch() {
+        keywordInfoMap = new HashMap<>();
+        documentationList = new ArrayList<>();
+        loadDocumentation();
+    }
 
-public void InputT(String input){
+    private void loadDocumentation() {
+        File folder = new File(folderPath);
+        File[] files = folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".json"));
 
+        if (files != null) {
+            for (File file : files) {
+                try {
+                    FileInputStream fis = new FileInputStream(file);
+                    JSONTokener tokener = new JSONTokener(fis);
+                    JSONObject jsonDocument = new JSONObject(tokener);
+
+                    JSONArray foundDocumentation = jsonDocument.getJSONArray("foundDocumentation");
+
+                    for (int i = 0; i < foundDocumentation.length(); i++) {
+                        JSONObject documentationObject = foundDocumentation.getJSONObject(i);
+                        JSONArray keywords = documentationObject.getJSONArray("keywords");
+                        String documentation = documentationObject.getString("documentation");
+
+                        // Add documentation to the list
+                        documentationList.add(new JSONObject(documentation));
+
+                        // Add each keyword-documentation pair to the map
+                        for (int j = 0; j < keywords.length(); j++) {
+                            keywordInfoMap.put(keywords.getString(j), documentation);
+                        }
+                    }
+                } catch (FileNotFoundException e) {
+                    System.err.println("File not found: " + file.getAbsolutePath());
+                    // Log the error or handle it according to your application's requirements
+                }
+            }
+        }
+    }
+
+    public String processInput(String input) {
         StringBuilder query = new StringBuilder(input);
-        query.append(" ((Beantwoord de vraag in het \" + language + \" en gebruik alleen de gegeven informatie (als die er is; als die ontbreekt, verzin dan zelf iets): ");
+        query.append(" Maak gebruik van de gegeven informatie: ");
         boolean foundKeyword = false;
 
-        ReadingFile readingFile = new ReadingFile();
-        for(String word : input.split("\\s+")){
-            String info = readingFile.loadInfoByKeyword(word);
-            if(!info.isEmpty()){
+        for (String word : input.split("\\s+")) {
+            String info = loadInfoByKeyword(word);
+            if (!info.isEmpty()) {
                 query.append(info).append(" ");
                 foundKeyword = true;
             }
         }
 
-        if (foundKeyword) {
-            query.append(" ) ");
-        } else {
-            query.append(" geen relevente keyword gevonden )");
+        if (!foundKeyword) {
+            query.append("No relevant information found for the input.");
         }
-       // return query.toString();
-        this.input = query.toString();
+
+        return query.toString();
     }
 
-
-    public ReadingFile() {
-        keywordInfoMap = new HashMap<>();
-        loadKeywordInfo();
+    private String loadInfoByKeyword(String keyword) {
+        return keywordInfoMap.getOrDefault(keyword.toLowerCase(), "");
     }
 
-    private void loadKeywordInfo() {
-        try {
-            File file = new File(fileName);
-            FileInputStream fis = new FileInputStream(file);
-            JSONTokener tokener = new JSONTokener(fis);
-            JSONArray jsonArray = new JSONArray(tokener);
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                String keyword = jsonObject.getString("Keyword").replaceAll("[?,.!]", "");
-                String info = jsonObject.getString("Info");
-                keywordInfoMap.put(keyword.toLowerCase(), info);
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+    public void displayDocumentation() {
+        for (JSONObject documentation : documentationList) {
+            System.out.println("Documentation: " + documentation.toString());
         }
     }
 
-    public String loadInfoByKeyword(String keyword) {
-        keyword = keyword.replaceAll("[?,.!]", "").toLowerCase();
-        return keywordInfoMap.getOrDefault(keyword, "");
+    public static void main(String[] args) {
+        ElasticSearch elasticSearch = new ElasticSearch();
+        elasticSearch.displayDocumentation();
     }
 }
