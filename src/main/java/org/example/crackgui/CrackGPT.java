@@ -17,24 +17,44 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CrackGPT extends Application {
-    public BorderPane root = new BorderPane();
+    private BorderPane root;
     private SettingsComponent settings;
     private PromptComponent prompt;
-    private MenuComponent menuComponent = new MenuComponent(this);
-    public ArrayList<HashMap<String, ArrayList<String>>> chats = new ArrayList<>();
+    private MenuComponent menuComponent;
+    public ArrayList<HashMap<String, ArrayList<String>>> chats;
     public ResourceBundle language;
-    public ScrollPane menu;
+    private ScrollPane menu;
     public int currentChat;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
     public void start(Stage stage) throws IOException {
-        this.language = ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));
+        initializeFields();
+        setupLanguageBundle();
+        setupNewChat();
+        setupScene(stage);
+    }
 
-        // Initialize the settings component before calling prompScreen
-        this.settings = new SettingsComponent(this);
+    private void initializeFields() {
+        root = new BorderPane();
+        chats = new ArrayList<>();
+        menuComponent = new MenuComponent(this);
+        settings = new SettingsComponent(this);
+    }
 
+    private void setupLanguageBundle() {
+        language = ResourceBundle.getBundle("org.example.crackgui.messages", new Locale("nl"));
+    }
+
+    private void setupNewChat() {
         menuComponent.newChat();
-        this.currentChat = 1;
+        currentChat = 1;
+    }
 
+    private void setupScene(Stage stage) {
         Scene scene = createScene(800, 600);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
@@ -46,15 +66,11 @@ public class CrackGPT extends Application {
     }
 
     private Scene createScene(int width, int height) {
-        VBox body = createBody();
-        VBox header = createHeader();
-        VBox bottomBox = createBottomBox();
-
         root.getStyleClass().add("body");
 
-        root.setTop(header);
-        root.setCenter(body);
-        root.setBottom(bottomBox);
+        root.setTop(createHeader());
+        root.setCenter(createBody());
+        root.setBottom(createBottomBox());
 
         return new Scene(root, width, height);
     }
@@ -62,15 +78,16 @@ public class CrackGPT extends Application {
     private VBox createBody() {
         VBox body = new VBox();
 
-        VBox chatContainer = new VBox();
-        chatContainer.setPadding(new Insets(20, 15, 20, 15));
-        chatContainer.setSpacing(10);
-
-        ScrollPane scrollPane = new ScrollPane(chatContainer);
+        ScrollPane scrollPane = new ScrollPane();
         scrollPane.setFitToWidth(true);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-        body.getChildren().addAll(scrollPane);
+        VBox chatContainer = new VBox();
+        chatContainer.setPadding(new Insets(20, 15, 20, 15));
+        chatContainer.setSpacing(10);
+        scrollPane.setContent(chatContainer);
+
+        body.getChildren().add(scrollPane);
 
         prompt = new PromptComponent(this, chatContainer);
 
@@ -83,33 +100,36 @@ public class CrackGPT extends Application {
         header.setPadding(new Insets(10));
         header.setSpacing(10);
 
-        Button hamburgerButton = new Button("\u2630");
-        hamburgerButton.getStyleClass().add("hamburger-button");
-        hamburgerButton.setOnAction(event -> {
-            if (root.getLeft() == null) {
-                this.menu = menuComponent.generate(root.widthProperty().multiply(0.3));
-                root.setLeft(this.menu);
-            } else {
-                root.setLeft(null);
-            }
-        });
-
+        Button hamburgerButton = createHamburgerButton();
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-
         GridPane settingsDialog = settings.generate();
         settingsDialog.setAlignment(Pos.TOP_RIGHT);
 
-
         header.getChildren().addAll(hamburgerButton, spacer, settingsDialog);
-
 
         VBox headerBox = new VBox();
         headerBox.getChildren().add(header);
 
         return headerBox;
+    }
+
+    private Button createHamburgerButton() {
+        Button hamburgerButton = new Button("\u2630");
+        hamburgerButton.getStyleClass().add("hamburger-button");
+        hamburgerButton.setOnAction(event -> toggleMenuVisibility());
+        return hamburgerButton;
+    }
+
+    private void toggleMenuVisibility() {
+        if (root.getLeft() == null) {
+            menu = menuComponent.generate(root.widthProperty().multiply(0.3));
+            root.setLeft(menu);
+        } else {
+            root.setLeft(null);
+        }
     }
 
     private VBox createBottomBox() {
@@ -120,22 +140,18 @@ public class CrackGPT extends Application {
 
         TextArea inputArea = prompt.generate();
 
-        bottomBox.getChildren().addAll(inputArea);
+        bottomBox.getChildren().add(inputArea);
 
         return bottomBox;
     }
 
     public SettingsComponent getSettings() {
-        return this.settings;
+        return settings;
     }
+    
 
-    public void update() {
-        prompt.update();
-    }
-
-    public void updateMenu()
-    {
-        this.menu = menuComponent.generate(root.widthProperty().multiply(0.3));
-        root.setLeft(this.menu);
+    public void updateMenu() {
+        menu = menuComponent.generate(root.widthProperty().multiply(0.3));
+        root.setLeft(menu);
     }
 }

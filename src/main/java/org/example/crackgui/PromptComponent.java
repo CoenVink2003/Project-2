@@ -1,17 +1,15 @@
 package org.example.crackgui;
 
-import javafx.event.EventHandler;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +20,8 @@ import java.net.URL;
 
 public class PromptComponent {
     private CrackGPT application;
-    private Button talkButton;
     private VBox chatContainer;
-
-    private static final String ai_url = "http://localhost:11434/api/generate";
+    private static final String AI_URL = "http://localhost:11434/api/generate";
 
     public PromptComponent(CrackGPT application, VBox chatContainer) {
         this.application = application;
@@ -36,112 +32,130 @@ public class PromptComponent {
         TextArea inputArea = new TextArea();
         inputArea.getStyleClass().add("promptInput");
 
-
-        inputArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                adjustTextAreaHeight(inputArea);
-                if (keyEvent.getCode() == KeyCode.ENTER)  {
-                    String input = inputArea.getText();
-                    inputArea.clear();
-
-                    Label inputLabel = new Label();
-                    inputLabel.setText(input);
-                    inputLabel.getStyleClass().add("input-bubble");
-                    HBox inputBubbleBox = new HBox(inputLabel);
-                    inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
-                    chatContainer.getChildren().add(inputBubbleBox);
-
-                    // Call the API and get the response
-                    String response = prompt(input);
-
-                    // Add output bubble to chat
-                    Label output = new Label();
-                    output.setText(response);
-                    output.getStyleClass().add("output-bubble");
-                    HBox outputBubbleBox = new HBox(output);
-                    outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
-                    chatContainer.getChildren().add(outputBubbleBox);
-                }
-            }
-        });
+        inputArea.setOnKeyPressed(this::handleKeyPressed);
 
         return inputArea;
     }
 
-    public void update() {
-        this.talkButton.setText(this.application.language.getString("ask") + " CrackedGPT");
-    }
-
-    public String prompt(String input) {
-        try {
-            String prompt = input + "\nPlease answer everything in " + this.application.getSettings().getLanguage() + ".";
-
-            // Prepare the request
-            JSONObject request = new JSONObject();
-            request.put("model", "gemma");
-            request.put("prompt", prompt);
-            request.put("stream", false);
-            URL url = new URL(ai_url);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setDoOutput(true);
-
-            try (OutputStream os = con.getOutputStream()) {
-                byte[] requestBody = request.toJSONString().getBytes();
-                os.write(requestBody, 0, requestBody.length);
-            }
-
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
-                    StringBuilder response = new StringBuilder();
-                    String inputLine;
-
-                    while ((inputLine = in.readLine()) != null) {
-                        response.append(inputLine);
-                    }
-
-                    return parseResponse(response.toString());
-                }
-            } else {
-                try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(con.getErrorStream()))) {
-                    StringBuilder errorMessage = new StringBuilder();
-                    String errorLine;
-
-                    while ((errorLine = errorReader.readLine()) != null) {
-                        errorMessage.append(errorLine);
-                    }
-
-                    return "Server responded with status code " + responseCode + ": " + errorMessage.toString();
-                }
-            }
-        } catch (IOException | ParseException e) {
-            return "Error: " + e.getMessage();
+    private void handleKeyPressed(KeyEvent keyEvent) {
+        TextArea inputArea = (TextArea) keyEvent.getSource();
+        adjustTextAreaHeight(inputArea);
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            handleUserInput(inputArea);
         }
     }
 
-    private String parseResponse(String response) throws ParseException {
-        JSONParser parser = new JSONParser();
-        JSONObject jsonResponse = (JSONObject) parser.parse(response);
-        Object responseObject = jsonResponse.get("response");
-
-        if (responseObject != null) {
-            return responseObject.toString();
-        } else {
-            return "Server response is missing or invalid.";
+    private void handleUserInput(TextArea inputArea) {
+        String input = inputArea.getText().trim();
+        if (!input.isEmpty()) {
+            inputArea.clear();
+            addInputBubble(input);
+            promptAsync(input);
         }
+    }
+
+    private void addInputBubble(String input) {
+        Label inputLabel = new Label(input);
+        inputLabel.getStyleClass().add("input-bubble");
+        HBox inputBubbleBox = new HBox(inputLabel);
+        inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
+        chatContainer.getChildren().add(inputBubbleBox);
+    }
+
+    private void promptAsync(String input) {
+        PromptService service = new PromptService(input);
+        service.setOnSucceeded(event -> {
+            // Final processing when service is done
+        });
+        service.start();
+    }
+
+    private void addOutputBubble(String response) {
+        Label outputLabel = new Label(response);
+        outputLabel.getStyleClass().add("output-bubble");
+        HBox outputBubbleBox = new HBox(outputLabel);
+        outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
+        chatContainer.getChildren().add(outputBubbleBox);
     }
 
     private void adjustTextAreaHeight(TextArea textArea) {
         String text = textArea.getText();
         int numLines = text.split("\n").length;
-
         double lineHeight = textArea.getFont().getSize() * 1.2;
         double padding = 20;
         double newHeight = lineHeight * numLines + padding;
-
         textArea.setPrefHeight(newHeight);
+    }
+
+    private void addToOutputBubble(Label outputLabel, String chunk) {
+        outputLabel.setText(outputLabel.getText() + convertStringToJson(chunk).getString("response"));
+    }
+
+    public static JSONObject convertStringToJson(String jsonString) {
+        return new JSONObject(jsonString);
+    }
+
+    private class PromptService extends Service<Void> {
+        private String input;
+
+        public PromptService(String input) {
+            this.input = input;
+        }
+
+        @Override
+        protected Task<Void> createTask() {
+            return new Task<>() {
+                @Override
+                protected Void call() throws Exception {
+                    prompt(input);
+                    return null;
+                }
+            };
+        }
+
+        private void prompt(String input) {
+            try {
+                HttpURLConnection con = createConnection(input);
+                Label outputLabel = new Label();
+                outputLabel.getStyleClass().add("output-bubble");
+                HBox outputBubbleBox = new HBox(outputLabel);
+                outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
+                javafx.application.Platform.runLater(() -> chatContainer.getChildren().add(outputBubbleBox));
+
+                processResponseStream(con, outputLabel);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        private HttpURLConnection createConnection(String input) throws IOException {
+            URL url = new URL(AI_URL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setDoOutput(true);
+
+            JSONObject request = new JSONObject();
+            request.put("model", "gemma");
+            request.put("prompt", input);
+            request.put("stream", true);
+
+            try (OutputStream os = con.getOutputStream()) {
+                byte[] requestBody = request.toString().getBytes();
+                os.write(requestBody, 0, requestBody.length);
+            }
+
+            return con;
+        }
+
+        private void processResponseStream(HttpURLConnection con, Label outputLabel) throws IOException {
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                String inputLine;
+                while ((inputLine = in.readLine()) != null) {
+                    final String chunk = inputLine;
+                    javafx.application.Platform.runLater(() -> addToOutputBubble(outputLabel, chunk));
+                }
+            }
+        }
     }
 }

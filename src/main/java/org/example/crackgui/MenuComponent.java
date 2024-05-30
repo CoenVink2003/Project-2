@@ -7,46 +7,63 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MenuComponent {
     private CrackGPT application;
 
-    public MenuComponent(CrackGPT application)
-    {
+    public MenuComponent(CrackGPT application) {
         this.application = application;
     }
 
     public ScrollPane generate(DoubleBinding width) {
+        VBox menu = createMenuContainer();
+        menu.getChildren().add(createNewChatButton());
+
+        for (int i = 0; i < application.chats.size(); i++) {
+            menu.getChildren().add(createChatHistoryButton(i));
+        }
+
+        return createScrollPane(menu, width);
+    }
+
+    private VBox createMenuContainer() {
         VBox menu = new VBox();
         menu.getStyleClass().add("menu");
         menu.setAlignment(Pos.TOP_CENTER);
         menu.setPadding(new Insets(10));
         menu.setSpacing(10);
+        return menu;
+    }
 
+    private Button createNewChatButton() {
         Button newItem = new Button("New Chat");
         newItem.setOnAction(event -> {
             newChat();
-            this.application.updateMenu();
+            application.updateMenu();
         });
-        newItem.getStyleClass().add("chatbtn");
-        newItem.setMaxWidth(Double.MAX_VALUE);
-        newItem.setTextAlignment(TextAlignment.CENTER);
-        newItem.setAlignment(Pos.CENTER);
-        menu.getChildren().add(newItem);
+        configureButton(newItem);
+        return newItem;
+    }
 
-        for (int i = 0; i < this.application.chats.size(); i++) {
-            HashMap<String, ArrayList<String>> chat = this.application.chats.get(i);
-            Button historyItem = new Button(chat.get("name").get(0));
-            final int index = i; // Capture the index
-            historyItem.setOnAction(event -> changeChat(index));
-            historyItem.setMaxWidth(Double.MAX_VALUE);
-            historyItem.getStyleClass().add("chatbtn");
-            menu.getChildren().add(historyItem);
-        }
+    private Button createChatHistoryButton(int index) {
+        HashMap<String, ArrayList<String>> chat = application.chats.get(index);
+        Button historyItem = new Button(chat.get("name").get(0));
+        historyItem.setOnAction(event -> changeChat(index));
+        configureButton(historyItem);
+        return historyItem;
+    }
 
+    private void configureButton(Button button) {
+        button.getStyleClass().add("chatbtn");
+        button.setMaxWidth(Double.MAX_VALUE);
+        button.setTextAlignment(TextAlignment.CENTER);
+        button.setAlignment(Pos.CENTER);
+    }
 
+    private ScrollPane createScrollPane(VBox menu, DoubleBinding width) {
         ScrollPane menuRoot = new ScrollPane(menu);
         menuRoot.setFitToWidth(true);
         menuRoot.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -56,19 +73,23 @@ public class MenuComponent {
         return menuRoot;
     }
 
-    public void changeChat(int chatIndex)
-    {
-        this.application.currentChat = chatIndex;
-        this.application.updateMenu();
+    public void changeChat(int chatIndex) {
+        application.currentChat = chatIndex;
+        application.updateMenu();
     }
 
     public void newChat() {
-        HashMap<String, ArrayList<String>> chatData = new HashMap<String, ArrayList<String>>();
-        ArrayList<String> chatNaam = new ArrayList<String>();
-        int number = this.application.chats.size() + 1;
-        chatNaam.add("Chat " + number);
-        chatData.put("name", chatNaam);
-        chatData.put("dialog", new ArrayList<String>());
-        this.application.chats.addFirst(chatData);
+        HashMap<String, ArrayList<String>> chatData = createNewChatData();
+        application.chats.add(0, chatData);
+    }
+
+    private HashMap<String, ArrayList<String>> createNewChatData() {
+        HashMap<String, ArrayList<String>> chatData = new HashMap<>();
+        ArrayList<String> chatName = new ArrayList<>();
+        int number = application.chats.size() + 1;
+        chatName.add("Chat " + number);
+        chatData.put("name", chatName);
+        chatData.put("dialog", new ArrayList<>());
+        return chatData;
     }
 }

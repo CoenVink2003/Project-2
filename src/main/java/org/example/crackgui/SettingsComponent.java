@@ -12,79 +12,57 @@ import java.util.ResourceBundle;
 public class SettingsComponent {
 
     private CrackGPT application;
-    private Label languageLabel;
-
+    private ComboBox<String> languageSelect;
     private String language;
 
     public SettingsComponent(CrackGPT application) {
-        this.language = "Dutch";
         this.application = application;
+        initializeComponents();
     }
 
-    public String getLanguage() {
-        return this.language;
+    private void initializeComponents() {
+        languageSelect = createLanguageComboBox();
+        languageSelect.setOnAction(event -> updateLanguage());
+    }
+
+    private ComboBox<String> createLanguageComboBox() {
+        ComboBox<String> comboBox = new ComboBox<>();
+        comboBox.getItems().addAll("English", "Spanish", "Dutch", "Norwegian", "Portuguese", "German", "French", "Italian");
+        comboBox.getStyleClass().add("setting-combo-box");
+        comboBox.setValue("Dutch");
+        return comboBox;
     }
 
     public GridPane generate() {
         GridPane gridPane = new GridPane();
         gridPane.setPadding(new Insets(10, 0, 0, 0));
         gridPane.setAlignment(Pos.CENTER);
-
-        ComboBox<String> languageSelect = new ComboBox<>();
-
-        languageSelect.getItems().add("English");
-        languageSelect.getItems().add("Spanish");
-        languageSelect.getItems().add("Dutch");
-        languageSelect.getItems().add("Norwegian");
-        languageSelect.getItems().add("Portuguese");
-        languageSelect.getItems().add("German");
-        languageSelect.getItems().add("French");
-        languageSelect.getItems().add("Italian");
-
-
-        languageSelect.getStyleClass().add("setting-combo-box");
         gridPane.add(languageSelect, 0, 1);
-        languageSelect.setValue("Dutch");
-
-        languageSelect.setOnAction(event -> updateLanguage(languageSelect));
-
         return gridPane;
     }
 
-    private void updateLanguage(ComboBox<String> languageSelect) {
-        this.language = languageSelect.getValue();
-        Locale newLocale;
-        switch (this.language) {
-            case "English":
-                newLocale = new Locale("en");
-                break;
-            case "Spanish":
-                newLocale = new Locale("es");
-                break;
-            case "Dutch":
-                newLocale = new Locale("nl");
-                break;
-            case "Norwegian":
-                newLocale = new Locale("no");
-                break;
-            case "Portuguese":
-                newLocale = new Locale("pt");
-                break;
-            case "German":
-                newLocale = new Locale("de");
-                break;
-            case "French":
-                newLocale = new Locale("fr");
-                break;
-            case "Italian":
-                newLocale = new Locale("it");
-                break;
-            default:
-                newLocale = Locale.getDefault();
-                break;
-        }
+    private void updateLanguage() {
+        String selectedLanguage = languageSelect.getValue();
+        Locale newLocale = switchLocale(selectedLanguage);
+        application.language = ResourceBundle.getBundle("org.example.crackgui.messages", newLocale);
+    }
 
-        // Set the new language
-        this.application.language = ResourceBundle.getBundle("org.example.crackgui.messages", newLocale);
+    private Locale switchLocale(String language) {
+        this.language = languageSelect.getValue();
+        return switch (language) {
+            case "English" -> new Locale("en");
+            case "Spanish" -> new Locale("es");
+            case "Dutch" -> new Locale("nl");
+            case "Norwegian" -> new Locale("no");
+            case "Portuguese" -> new Locale("pt");
+            case "German" -> new Locale("de");
+            case "French" -> new Locale("fr");
+            case "Italian" -> new Locale("it");
+            default -> Locale.getDefault();
+        };
+    }
+
+    public String getLanguage() {
+        return this.language;
     }
 }
