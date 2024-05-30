@@ -6,9 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
     </list>
-    <list id="80733ee7-7d89-477a-9786-d5ec94732f46" name="Changes by Coen" comment="" />
+    <list id="80733ee7-7d89-477a-9786-d5ec94732f46" name="Changes by Coen" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
+    </list>
+    <list id="88cbaac0-a473-4efb-a221-dc53e80c1be1" name="Changes by Gebruiker" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Main.java" afterDir="false" />
+    </list>
     <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="" />
     <list id="35cbed47-457f-42fd-ae04-7d81c72daec9" name="Changes by Lenovo" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +45,22 @@
     &quot;accountId&quot;: &quot;4af3a070-0df2-4980-ab98-6105d6d9323c&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java">
+      <ranges>
+        <range start1="2" end1="2" start2="2" end2="3" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="6" end1="6" start2="7" end2="9" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="31" end1="36" start2="34" end2="37" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="37" end1="39" start2="38" end2="38" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="40" end1="43" start2="39" end2="46" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="44" end1="50" start2="47" end2="53" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="51" end1="53" start2="54" end2="56" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="54" end1="61" start2="57" end2="66" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+        <range start1="63" end1="65" start2="68" end2="69" changelist="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" />
+        <range start1="131" end1="131" start2="135" end2="146" changelist="80733ee7-7d89-477a-9786-d5ec94732f46" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -136,6 +159,7 @@
       <workItem from="1716798918015" duration="7886000" />
       <workItem from="1716813271699" duration="239000" />
       <workItem from="1716813651534" duration="314000" />
+      <workItem from="1717064886526" duration="955000" />
     </task>
     <servers />
   </component>

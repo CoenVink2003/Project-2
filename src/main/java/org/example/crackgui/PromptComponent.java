@@ -1,9 +1,12 @@
 package org.example.crackgui;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import org.json.simple.JSONObject;
@@ -29,40 +32,41 @@ public class PromptComponent {
         this.chatContainer = chatContainer;
     }
 
-    public Button generate(TextArea inputTextArea, String selectedLanguage) {
-        Button button = new Button();
-        button.getStyleClass().add("talk-btn");
-        button.setMaxWidth(Double.MAX_VALUE);
-        button.setAlignment(Pos.CENTER);
+    public TextArea generate() {
+        TextArea inputArea = new TextArea();
+        inputArea.getStyleClass().add("promptInput");
 
-        String buttonText = this.application.language.getString("ask") + " CrackedGPT";
-        button.setText(buttonText);
 
-        button.setOnAction(event -> {
-            String input = inputTextArea.getText();
-            inputTextArea.clear();
+        inputArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                adjustTextAreaHeight(inputArea);
+                if (keyEvent.getCode() == KeyCode.ENTER)  {
+                    String input = inputArea.getText();
+                    inputArea.clear();
 
-            Label inputLabel = new Label();
-            inputLabel.setText(input);
-            inputLabel.getStyleClass().add("input-bubble");
-            HBox inputBubbleBox = new HBox(inputLabel);
-            inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
-            chatContainer.getChildren().add(inputBubbleBox);
+                    Label inputLabel = new Label();
+                    inputLabel.setText(input);
+                    inputLabel.getStyleClass().add("input-bubble");
+                    HBox inputBubbleBox = new HBox(inputLabel);
+                    inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
+                    chatContainer.getChildren().add(inputBubbleBox);
 
-            // Call the API and get the response
-            String response = prompt(input);
+                    // Call the API and get the response
+                    String response = prompt(input);
 
-            // Add output bubble to chat
-            Label output = new Label();
-            output.setText(response);
-            output.getStyleClass().add("output-bubble");
-            HBox outputBubbleBox = new HBox(output);
-            outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
-            chatContainer.getChildren().add(outputBubbleBox);
+                    // Add output bubble to chat
+                    Label output = new Label();
+                    output.setText(response);
+                    output.getStyleClass().add("output-bubble");
+                    HBox outputBubbleBox = new HBox(output);
+                    outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
+                    chatContainer.getChildren().add(outputBubbleBox);
+                }
+            }
         });
 
-        this.talkButton = button;
-        return button;
+        return inputArea;
     }
 
     public void update() {
@@ -128,5 +132,16 @@ public class PromptComponent {
         } else {
             return "Server response is missing or invalid.";
         }
+    }
+
+    private void adjustTextAreaHeight(TextArea textArea) {
+        String text = textArea.getText();
+        int numLines = text.split("\n").length;
+
+        double lineHeight = textArea.getFont().getSize() * 1.2;
+        double padding = 20;
+        double newHeight = lineHeight * numLines + padding;
+
+        textArea.setPrefHeight(newHeight);
     }
 }

@@ -118,30 +118,12 @@ public class CrackGPT extends Application {
         bottomBox.setPadding(new Insets(20, 15, 20, 15));
         bottomBox.setSpacing(10);
 
-        TextArea inputArea = new TextArea();
-        inputArea.getStyleClass().add("promptInput");
-
-        inputArea.textProperty().addListener((observable, oldValue, newValue) -> {
-            adjustTextAreaHeight(inputArea);
-        });
+        TextArea inputArea = prompt.generate();
 
 
-        Button talkButton = prompt.generate(inputArea, settings.getLanguage());
-
-        bottomBox.getChildren().addAll(inputArea, talkButton);
+        bottomBox.getChildren().addAll(inputArea);
 
         return bottomBox;
-    }
-
-    private void adjustTextAreaHeight(TextArea textArea) {
-        String text = textArea.getText();
-        int numLines = text.split("\n").length;
-
-        double lineHeight = textArea.getFont().getSize() * 1.2;
-        double padding = 20;  // Add some padding
-        double newHeight = lineHeight * numLines + padding;
-
-        textArea.setPrefHeight(newHeight);
     }
 
     public SettingsComponent getSettings() {
