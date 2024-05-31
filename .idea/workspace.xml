@@ -5,10 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Documentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 1.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bijlagen/Resource Selector VB 1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bijlagen/Resource Selector VB 2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/ElasticSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/ElasticSearch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
     </list>
     <list id="f7c0b34f-acc2-4385-912f-8bea3bdb060f" name="Changes by Coen" comment="" />
     <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="" />
@@ -37,7 +48,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CoenVink2003/Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;4af3a070-0df2-4980-ab98-6105d6d9323c&quot;
+    &quot;accountId&quot;: &quot;83767a64-625b-48b1-87b1-059012f4a5e6&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -63,35 +74,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CrackGPT.executor": "Run",
-    "Application.CrackGPTOld.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/timobrouwer/Documents/HHS/Github/Project-2",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CrackGPT.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CrackGPTOld.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ElasticSearch.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jefferyyong/IdeaProjects/eb3faa28e9061f9fe151d37cbece340b40c09385&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/bijlagen" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources/org/example/crackgui" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/crackgui" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.crackgui" />
     </key>
   </component>
   <component name="RunManager">
@@ -108,6 +129,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -144,6 +173,9 @@
       <workItem from="1716813271699" duration="239000" />
       <workItem from="1716813651534" duration="314000" />
       <workItem from="1717064886526" duration="9857000" />
+      <workItem from="1717161205770" duration="366000" />
+      <workItem from="1717161850749" duration="4868000" />
+      <workItem from="1717190239081" duration="3817000" />
     </task>
     <servers />
   </component>
