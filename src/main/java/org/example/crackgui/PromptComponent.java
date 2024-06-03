@@ -138,7 +138,7 @@ public class PromptComponent {
 
                     if(convertStringToJson(chunk).getBoolean("done"))
                     {
-                        application.getChatComponent().saveHistory(false, outputLabel.getText() + convertStringToJson(chunk).getString("response"));
+                        application.getChatComponent().saveHistory( outputLabel.getText() + convertStringToJson(chunk).getString("response"));
                     }
                 }
             }

@@ -24,7 +24,7 @@ public class ChatComponent {
 
         if(save)
         {
-            this.saveHistory(input, text);
+            this.saveHistory(text);
         }
 
         Runnable addBubbleTask = () -> {
@@ -48,7 +48,7 @@ public class ChatComponent {
         return newBubble;
     }
 
-    public void saveHistory(boolean input, String text)
+    public void saveHistory(String text)
     {
         ArrayList<String> chatHistory = this.application.chats.get(this.application.currentChat - 1).get("dialog");
 
@@ -57,7 +57,6 @@ public class ChatComponent {
 
     public void loadChat()
     {
-        // Create a snapshot of the chat history to avoid concurrent modification
         ArrayList<String> chatHistorySnapshot;
         synchronized (this.application.chats) {
             chatHistorySnapshot = new ArrayList<>(this.application.chats.get(this.application.currentChat - 1).get("dialog"));
