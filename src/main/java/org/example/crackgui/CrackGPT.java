@@ -23,6 +23,7 @@ public class CrackGPT extends Application {
     private MenuComponent menuComponent;
     public ArrayList<HashMap<String, ArrayList<String>>> chats;
     public ResourceBundle language;
+    private ChatComponent chatComponent;
     private ScrollPane menu;
     public int currentChat;
 
@@ -86,10 +87,10 @@ public class CrackGPT extends Application {
         chatContainer.setPadding(new Insets(20, 15, 20, 15));
         chatContainer.setSpacing(10);
         scrollPane.setContent(chatContainer);
-
         body.getChildren().add(scrollPane);
 
-        prompt = new PromptComponent(this, chatContainer);
+        chatComponent = new ChatComponent(this, chatContainer);
+        prompt = new PromptComponent(this);
 
         return body;
     }
@@ -153,5 +154,10 @@ public class CrackGPT extends Application {
     public void updateMenu() {
         menu = menuComponent.generate(root.widthProperty().multiply(0.3));
         root.setLeft(menu);
+    }
+
+    public ChatComponent getChatComponent()
+    {
+        return this.chatComponent;
     }
 }

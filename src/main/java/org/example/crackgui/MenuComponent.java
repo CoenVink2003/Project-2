@@ -51,7 +51,10 @@ public class MenuComponent {
     private Button createChatHistoryButton(int index) {
         HashMap<String, ArrayList<String>> chat = application.chats.get(index);
         Button historyItem = new Button(chat.get("name").get(0));
-        historyItem.setOnAction(event -> changeChat(index));
+        historyItem.setOnAction(event -> {
+            this.application.currentChat = index + 1;
+            application.getChatComponent().loadChat();
+        });
         configureButton(historyItem);
         return historyItem;
     }

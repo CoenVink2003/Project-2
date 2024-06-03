@@ -20,12 +20,10 @@ import java.net.URL;
 
 public class PromptComponent {
     private CrackGPT application;
-    private VBox chatContainer;
     private static final String AI_URL = "http://localhost:11434/api/generate";
 
-    public PromptComponent(CrackGPT application, VBox chatContainer) {
+    public PromptComponent(CrackGPT application) {
         this.application = application;
-        this.chatContainer = chatContainer;
     }
 
     public TextArea generate() {
@@ -51,34 +49,17 @@ public class PromptComponent {
             ElasticSearch elasticSearch = new ElasticSearch();
             String processedInput = elasticSearch.processInput(input);
             inputArea.clear();
-            addInputBubble(input);
+            application.getChatComponent().addBubble(true, input, true);
             promptAsync(processedInput); // Use processed input for AI prompt
         }
     }
 
 
-    private void addInputBubble(String input) {
-        Label inputLabel = new Label(input);
-        inputLabel.getStyleClass().add("input-bubble");
-        HBox inputBubbleBox = new HBox(inputLabel);
-        inputBubbleBox.setAlignment(Pos.CENTER_RIGHT);
-        chatContainer.getChildren().add(inputBubbleBox);
-    }
-
     private void promptAsync(String input) {
         PromptService service = new PromptService(input);
         service.setOnSucceeded(event -> {
-            // Final processing when service is done
         });
         service.start();
-    }
-
-    private void addOutputBubble(String response) {
-        Label outputLabel = new Label(response);
-        outputLabel.getStyleClass().add("output-bubble");
-        HBox outputBubbleBox = new HBox(outputLabel);
-        outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
-        chatContainer.getChildren().add(outputBubbleBox);
     }
 
     private void adjustTextAreaHeight(TextArea textArea) {
@@ -119,13 +100,10 @@ public class PromptComponent {
         private void prompt(String input) {
             try {
                 HttpURLConnection con = createConnection(input);
-                Label outputLabel = new Label();
-                outputLabel.getStyleClass().add("output-bubble");
-                HBox outputBubbleBox = new HBox(outputLabel);
-                outputBubbleBox.setAlignment(Pos.CENTER_LEFT);
-                javafx.application.Platform.runLater(() -> chatContainer.getChildren().add(outputBubbleBox));
 
-                processResponseStream(con, outputLabel);
+                HBox outputBubble = application.getChatComponent().addBubble(false, "", false);
+
+                processResponseStream(con, (Label) outputBubble.getChildren().getFirst());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -157,6 +135,11 @@ public class PromptComponent {
                 while ((inputLine = in.readLine()) != null) {
                     final String chunk = inputLine;
                     javafx.application.Platform.runLater(() -> addToOutputBubble(outputLabel, chunk));
+
+                    if(convertStringToJson(chunk).getBoolean("done"))
+                    {
+                        application.getChatComponent().saveHistory(false, outputLabel.getText() + convertStringToJson(chunk).getString("response"));
+                    }
                 }
             }
         }
