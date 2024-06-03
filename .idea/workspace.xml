@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/google_code_gson.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/Documentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 1.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 2.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bijlagen/Resource Selector VB 2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bijlagen/Resource Selector VB 1.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bijlagen/Resource Selector VB 2.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/ElasticSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/ElasticSearch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <list id="f7c0b34f-acc2-4385-912f-8bea3bdb060f" name="Changes by Coen" comment="" />
     <list id="4803688b-8e7b-4a00-b377-8ae59c1ca08e" name="Changes by jefferyyong" comment="" />
@@ -48,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/CoenVink2003/Project-2.git&quot;,
-    &quot;accountId&quot;: &quot;83767a64-625b-48b1-87b1-059012f4a5e6&quot;
+    &quot;accountId&quot;: &quot;4af3a070-0df2-4980-ab98-6105d6d9323c&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -130,14 +117,6 @@
       </method>
     </configuration>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -176,6 +155,8 @@
       <workItem from="1717161205770" duration="366000" />
       <workItem from="1717161850749" duration="4868000" />
       <workItem from="1717190239081" duration="3817000" />
+      <workItem from="1717401819379" duration="183000" />
+      <workItem from="1717402009404" duration="230000" />
     </task>
     <servers />
   </component>
