@@ -6,14 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="7a7699bf-7972-4eb5-831b-ab2bbd88a7f8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/ChatComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/ChatComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/MenuComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/CrackGPT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent$PromptService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/crackgui/PromptComponent.class" afterDir="false" />
     </list>
     <list id="f7c0b34f-acc2-4385-912f-8bea3bdb060f" name="Changes by Coen" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ChatComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ChatComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/CrackGPT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/ElasticSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/MenuComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/PromptComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/crackgui/SettingsComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +164,7 @@
       <workItem from="1717190239081" duration="3817000" />
       <workItem from="1717401819379" duration="183000" />
       <workItem from="1717402009404" duration="230000" />
-      <workItem from="1717403022699" duration="6551000" />
+      <workItem from="1717403022699" duration="7241000" />
     </task>
     <servers />
   </component>

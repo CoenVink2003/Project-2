@@ -20,15 +20,17 @@ public class ElasticSearch {
             s.toLowerCase();
         }
 
+        String newInput = input;
         List<Documentation.FoundDocumentation> searchResults = getSearchResults();
         for(Documentation.FoundDocumentation d : searchResults){
             for(String s : inputKeywords){
                 if(d.getKeywords().contains(s)){
-                    System.out.println(d.getDocumentation());
+                    newInput = newInput + "\n\nMaak ook gebruik van deze interne informatie: \n" + d.getDocumentation();
                 }
             }
         }
-        return input;
+
+        return newInput;
     }
 
     public List<Documentation.FoundDocumentation> getSearchResults() {

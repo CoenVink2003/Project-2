@@ -33,8 +33,8 @@ public class CrackGPT extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        initializeFields();
         setupLanguageBundle();
+        initializeFields();
         setupNewChat();
         setupScene(stage);
     }

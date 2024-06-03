@@ -49,6 +49,7 @@ public class PromptComponent {
             ElasticSearch elasticSearch = new ElasticSearch();
             String processedInput = elasticSearch.processInput(input);
             inputArea.clear();
+            System.out.println(processedInput);
             application.getChatComponent().addBubble(true, input, true);
             promptAsync(processedInput); // Use processed input for AI prompt
         }

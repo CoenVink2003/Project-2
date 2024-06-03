@@ -56,8 +56,6 @@ public class MenuComponent {
             application.getChatComponent().loadChat();
         });
         configureButton(historyItem);
-        this.application.currentChat = index + 1;
-        application.getChatComponent().loadChat();
         return historyItem;
     }
 
