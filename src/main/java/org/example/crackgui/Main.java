@@ -4,6 +4,7 @@ import javafx.application.Application;
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(CrackGPT.class, args);
+        Application.launch(LoginComponent.class, args);
     }
 }
+

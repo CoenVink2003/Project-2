@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane id="AnchorPane" minHeight="600.0" minWidth="800.0" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: linear-gradient(#2067DC, #163C6D);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.crackgui.LoginComponent">
+    <children>
+        <VBox fx:id="vbox" alignment="CENTER" layoutX="175.0" layoutY="30.0" prefHeight="500.0" prefWidth="450.0" style="-fx-background-color: white; -fx-border-color: #ccc; -fx-border-width: 1; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+        </VBox>
+        <Button fx:id="closeButton" alignment="CENTER" layoutX="722.0" layoutY="550.0" mnemonicParsing="false" onAction="#exit" prefHeight="30.0" prefWidth="64.0" style="-fx-background-color: #ff4c4c; -fx-text-fill: white; -fx-background-radius: 15; -fx-border-radius: 15;" text="Sluiten" />
+    </children>
+</Pane>
